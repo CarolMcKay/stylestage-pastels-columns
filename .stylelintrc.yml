@@ -1,0 +1,29 @@
+extends: stylelint-config-standard
+
+plugins:
+  - stylelint-scss
+
+# @link https://stylelint.io/user-guide/rules/
+# @link https://github.com/kristerkari/stylelint-scss
+rules:
+  at-rule-empty-line-before: ~
+  at-rule-no-unknown: ~   # doesn't work with SCSS; use the SCSS rule instead (below)
+  # block-closing-brace-empty-line-before: ~ # I like this one - cmckay
+  # block-closing-brace-newline-before: ~
+  block-opening-brace-space-before: ~
+  comment-empty-line-before: ~
+  declaration-bang-space-after: ~
+  declaration-colon-newline-after: ~
+  declaration-colon-space-after: ~
+  declaration-empty-line-before: ~
+  indentation: ~
+  # length-zero-no-unit: ~
+  # max-empty-lines: ~
+  media-feature-colon-space-before: always
+  media-feature-colon-space-after: always
+  no-descending-specificity: ~
+  rule-empty-line-before: ~
+  selector-combinator-space-after: ~
+  selector-list-comma-newline-after: ~
+  # from stylelint-scss
+  scss/at-rule-no-unknown: true

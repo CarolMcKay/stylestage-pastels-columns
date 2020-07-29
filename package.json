@@ -1,0 +1,26 @@
+{
+  "name": "stylestage-play",
+  "version": "1.0.0",
+  "main": "Gruntfile.js",
+  "browserslist": [
+    "> 0.5%",
+    "ios >= 9.3.5",
+    "not dead"
+  ],
+  "author": "WebAware https://shop.webaware.com.au/",
+  "private": true,
+  "license": "Copyright (c) 2020 WebAware Pty Ltd",
+  "devDependencies": {
+    "autoprefixer": "^9.8.5",
+    "clean-css": "^4.2.3",
+    "grunt": "^1.2.1",
+    "grunt-postcss": "^0.9.0",
+    "grunt-sass": "^3.1.0",
+    "grunt-stylelint": "^0.15.0",
+    "postcss-clean": "^1.1.0",
+    "sass": "^1.26.10",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.18.0"
+  }
+}
