@@ -1,0 +1,72 @@
+/* menu */
+
+nav
+{
+	position: var(--position);
+	padding: 1em 2em;
+	top: 0;
+	inset-block-start: 0;
+	right: 0;
+	inset-inline-end: 0;
+	color: var(--col-menu);
+	background-color: var(--col-cta);
+}
+
+aside
+{
+	font-weight: bold;
+
+	a
+	{
+		color: inherit;
+	}
+}
+
+.profile // aside
+{
+	position: var(--position);
+	padding: 1em 3em 1em 1em;
+	top: 0;
+	inset-block-start: 0;
+	left: 0;
+	inset-inline-start: 0;
+	border:var(--rule);
+	transform: translateX(-87%);
+	transition: transform 300ms linear;
+	background-color: var(--col-bg);
+
+	&:hover,
+	&:active,
+	&:focus
+	{
+		transform: translateX(0);
+	}
+
+	&:focus-within // seperate so it doesn't break :hover in ie11
+	{
+		transform: translateX(0);
+	}
+}
+
+#styles // aside
+{
+
+}
+
+#profile-title
+{
+	margin: 0;
+	writing-mode: vertical-rl;
+	position: absolute;
+	top: 0;
+	inset-inline-start: 0;
+	right: 0;
+	inset-block-start: 0;
+	cursor: pointer;
+	padding: 0.5em 0 0.5em 0.25em;
+	color: var(--col-menu);
+	background-color: var(--col-cta);
+	height: 100%;
+	inline-size: 100%;
+	white-space: nowrap;
+}

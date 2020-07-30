@@ -1,0 +1,15 @@
+/* sass mixins */
+
+@use "_constants" as *;
+
+@mixin focus-outline
+{
+	outline-offset: 0.15em;
+	outline:2px solid transparent;
+	transition: outline-color ease-in 150ms;
+
+	&:focus
+	{
+		outline-color: var(--col-outline);
+	}
+}

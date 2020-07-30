@@ -1,0 +1,44 @@
+/* constants */
+
+$breakpoint: 45rem;
+
+:root
+{
+	--ff-cursive: 'Italianno', cursive;
+	--ff-serif: 'Libre Caslon Text', serif;
+	--fs-h1-fallback: calc(2rem + 15vw);
+	--fs-h1: min(calc(2rem + 15vw), 12rem);
+	--fs-h2: 1.75rem;
+	--fs-h3: 1.5rem;
+	--fs-h4: 1.25rem;
+	--fs-text: 0.95rem;
+
+	--col-accent: salmon;
+	--col-cta: Teal;
+	--col-outline: var(--col-accent);
+	--col-text: #333;
+	--col-bg: wheat;
+	--col-menu: white;
+	--col-selection: var(--col-bg);
+	--col-selectionbg: var(--col-text);
+	--col-placeholder: #555;
+	--rule: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark)
+{
+	:root
+	{
+		--col-text: var(--col-bg);
+		--col-bg: var(--col-text);
+		--rule: 1px solid rgba(255, 255, 255, 0.2);
+	}
+}
+
+@media screen and (min-width: $breakpoint)
+{
+	:root
+	{
+		--position: fixed;
+	}
+}

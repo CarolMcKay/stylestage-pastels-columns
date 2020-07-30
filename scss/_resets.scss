@@ -1,0 +1,175 @@
+/* browser resets */
+
+@use "_constants" as *;
+@use "_mixins" as *;
+
+/* experience */
+
+html
+{
+	scroll-behavior: smooth; /* when js isn't doing it */
+
+	@media (prefers-reduced-motion : reduce)
+	{
+		scroll-behavior: auto;
+	}
+}
+
+/* layout including margins */
+
+body
+{
+	width: 100%;
+    min-height: 100vh;
+    min-block-size: 100vh;
+	margin:0;
+	overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; // smoother scrolling for iphone
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+*,
+*::before,
+*::after
+{
+	box-sizing: border-box;
+}
+
+img,
+picture
+{
+	max-width: 100%;
+	height: auto;
+}
+
+p, li, dd
+{
+	max-width: 70ch;
+}
+
+/* margins */
+
+*
+{
+	margin-top: 0;
+}
+
+* + :last-child
+{
+	margin-bottom: 0;
+}
+
+figure
+{
+    margin: 0;
+}
+
+dd
+{
+	margin-left: 0;
+}
+
+li
+{
+	margin-bottom: 1em;
+}
+
+nav
+{
+	ul
+	{
+		padding-left: 0;
+		list-style-type: none;
+	}
+
+	li
+	{
+		margin: 0;
+	}
+
+	a
+	{
+		color: inherit;
+		text-decoration: none;
+		font-weight: bold;
+	}
+}
+
+aside
+{
+	ul
+	{
+		padding-left: 0;
+		list-style-type: none;
+	}
+}
+
+/* colours and fonts */
+
+:root
+{
+	font-size: 16px;
+    color: var(--col-text);
+    background: var(--col-bg);
+}
+
+body
+{
+	font-size:100%;
+	text-size-adjust:100%;
+	text-rendering:optimizeLegibility;
+	// text-rendering:geometricPrecision;
+	line-height: 1.6;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select
+{
+  font: inherit;
+}
+
+a
+{
+	color: var(--col-text);
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.4rem 0;
+
+	@media (any-pointer : coarse)
+	{
+		padding: 0.6rem  0;
+	}
+
+	/* focus outline */
+	@include focus-outline;
+}
+
+::selection
+{
+    color: var(--col-selection);
+    background-color: var(--col-selectionbg);
+}
+
+::placeholder
+{
+	color: var(--col-placeholder);
+}
+
+svg
+{
+	fill:currentColor;
+}
+
+/* cursors, focus outlines */
+
+details summary
+{
+	cursor: pointer;
+	outline: none; /* chrome fix */
+	display: block; /* edge fix */
+}
