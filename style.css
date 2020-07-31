@@ -70,20 +70,28 @@ p {
   max-width: 70ch
 }
 * {
-  margin-top: 0
+  margin-top: 0;
+  -webkit-margin-before: 0;
+  margin-block-start: 0
 }
 * + :last-child {
-  margin-bottom: 0
+  margin-bottom: 0;
+  -webkit-margin-after: 0;
+  margin-block-end: 0
 }
 figure,
 nav li {
   margin: 0
 }
 dd {
-  margin-left: 0
+  margin-left: 0;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0
 }
 li {
-  margin-bottom: 1em
+  margin-bottom: 1em;
+  -webkit-margin-after: 1em;
+  margin-block-end: 1em
 }
 aside ul,
 nav ul {
@@ -145,7 +153,7 @@ details summary {
 body {
   font-family: var(--ff-serif);
   align-items: center;
-  padding: 2em
+  padding: 1em 2em 0
 }
 h1 {
   font-family: var(--ff-cursive);
@@ -180,7 +188,9 @@ header .container {
 }
 header .container h2,
 header .container p {
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  -webkit-margin-after: 1rem;
+  margin-block-end: 1rem
 }
 nav {
   position: var(--position);
@@ -193,22 +203,22 @@ nav {
   background-color: var(--col-cta)
 }
 aside {
-  font-weight: 700
+  font-weight: 700;
+  background-color: var(--col-bg);
+  border: var(--rule);
+  transition: transform .3s ease-in
 }
 aside a {
   color: inherit
 }
 .profile {
-  position: var(--position);
   padding: 1em 3em 1em 1em;
-  top: 0;
-  inset-block-start: 0;
+  position: var(--position);
+  bottom: 5%;
+  inset-block-end: 5%;
   left: 0;
   inset-inline-start: 0;
-  border: var(--rule);
-  transform: translateX(-87%);
-  transition: transform .3s linear;
-  background-color: var(--col-bg)
+  transform: translateX(-87%)
 }
 .profile:active,
 .profile:focus,
@@ -218,6 +228,31 @@ aside a {
 .profile:focus-within {
   transform: translateX(0)
 }
+#styles {
+  order: 1;
+  margin-top: 3rem;
+  padding-bottom: 1.5em;
+  -webkit-padding-after: 1.5em;
+  padding-block-end: 1.5em
+}
+#styles h2 {
+  padding: 0 .5em
+}
+#styles .container > a,
+#styles ul {
+  margin-left: 1.5em;
+  -webkit-margin-start: 1.5em;
+  margin-inline-start: 1.5em;
+  margin-right: 1.5em;
+  -webkit-margin-end: 1.5em;
+  margin-inline-end: 1.5em
+}
+#profile-title,
+#styles h2 {
+  cursor: pointer;
+  color: var(--col-menu);
+  background-color: var(--col-cta)
+}
 #profile-title {
   margin: 0;
   -webkit-writing-mode: vertical-rl;
@@ -225,13 +260,10 @@ aside a {
   writing-mode: vertical-rl;
   position: absolute;
   top: 0;
-  inset-inline-start: 0;
   right: 0;
-  inset-block-start: 0;
+  inset: 0 0 auto auto;
   cursor: pointer;
   padding: .5em 0 .5em .25em;
-  color: var(--col-menu);
-  background-color: var(--col-cta);
   height: 100%;
   inline-size: 100%;
   white-space: nowrap
@@ -246,6 +278,7 @@ a:focus,
 a:hover {
   text-decoration: none
 }
+.page-footer .container,
 section.container {
   padding: 3rem 0;
   border-bottom: var(--rule)
@@ -257,6 +290,7 @@ section.container {
   h1 {
     line-height: initial
   }
+  .page-footer .container,
   section.container {
     columns: calc(3ch + 33vw) 2;
     column-gap: 7vw;
@@ -267,6 +301,8 @@ section.container {
   background-color: var(--col-accent);
   padding: .2em .1em;
   margin-right: .1em;
+  -webkit-margin-end: .1em;
+  margin-inline-end: .1em;
   font-size: 3em;
   line-height: 1;
   float: left

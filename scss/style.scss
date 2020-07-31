@@ -11,7 +11,7 @@
 body
 {
 	align-items: center;
-	padding: 2em;
+	padding: 1em 2em 0;
 }
 
 .link-github
@@ -34,7 +34,8 @@ a
 	}
 }
 
-section.container
+section.container,
+.page-footer .container
 {
 	padding: 3rem 0;
 	border-bottom: var(--rule);
@@ -42,7 +43,8 @@ section.container
 
 @media screen and (min-width: $breakpoint)
 {
-	section.container
+	section.container,
+	.page-footer .container
 	{
 		columns: calc(3ch + 33vw) 2;
 		column-gap: 7vw;
@@ -55,6 +57,7 @@ section.container
 	background-color: var(--col-accent);
 	padding: 0.2em 0.1em;
 	margin-right: 0.1em;
+	margin-inline-end: 0.1em;
 	font-size: 3em;
 	line-height: 1;
 	float: left;

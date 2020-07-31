@@ -1,4 +1,4 @@
-/* menu */
+/* menu and links */
 
 nav
 {
@@ -15,6 +15,9 @@ nav
 aside
 {
 	font-weight: bold;
+	background-color: var(--col-bg);
+	border:var(--rule);
+	transition: transform 300ms ease-in;
 
 	a
 	{
@@ -24,16 +27,13 @@ aside
 
 .profile // aside
 {
-	position: var(--position);
 	padding: 1em 3em 1em 1em;
-	top: 0;
-	inset-block-start: 0;
+	position: var(--position);
+	bottom: 5%;
+	inset-block-end: 5%;
 	left: 0;
 	inset-inline-start: 0;
-	border:var(--rule);
 	transform: translateX(-87%);
-	transition: transform 300ms linear;
-	background-color: var(--col-bg);
 
 	&:hover,
 	&:active,
@@ -50,7 +50,31 @@ aside
 
 #styles // aside
 {
+	order:1;
+	margin-top: 3rem;
+	padding-bottom: 1.5em;
+	padding-block-end: 1.5em;
 
+	h2
+	{
+		padding: 0 0.5em;
+	}
+
+	ul, .container > a
+	{
+		margin-left: 1.5em;
+		margin-inline-start: 1.5em;
+		margin-right: 1.5em;
+		margin-inline-end: 1.5em;
+	}
+}
+
+#profile-title,
+#styles h2
+{
+	cursor: pointer;
+	color: var(--col-menu);
+	background-color: var(--col-cta);
 }
 
 #profile-title
@@ -59,13 +83,10 @@ aside
 	writing-mode: vertical-rl;
 	position: absolute;
 	top: 0;
-	inset-inline-start: 0;
 	right: 0;
-	inset-block-start: 0;
+	inset: 0 0 auto auto;
 	cursor: pointer;
 	padding: 0.5em 0 0.5em 0.25em;
-	color: var(--col-menu);
-	background-color: var(--col-cta);
 	height: 100%;
 	inline-size: 100%;
 	white-space: nowrap;
