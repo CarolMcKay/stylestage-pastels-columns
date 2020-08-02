@@ -3,12 +3,21 @@
 @use "_constants" as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 /* see constants */
 
 body
 {
 	font-family: var(--ff-serif);
+}
+
+header
+{
+	p
+	{
+		max-width: none;
+	}
 }
 
 h1 // see animations for color
@@ -58,6 +67,13 @@ li
 blockquote
 {
 	margin: var(--padding);
+
+	@media only screen and (max-width: 600px)
+	{
+		margin-left: 0;
+		margin-right: 0;
+	}
+
 	column-span: all;
 	font-style: italic;
 
@@ -98,12 +114,23 @@ header .container
 	float: left;
 }
 
+ol
+{
+	li
+	{
+		&::marker
+		{
+			font-size: 1.5em;
+		}
+	}
+}
+
 .skip-link
 {
 	transition:
-	font-size ease-in 100ms,
-	opacity ease-in 100ms
-	;
+		font-size ease-in 100ms,
+		opacity ease-in 100ms
+		;
 
 	&:not(:hover):not(:focus)
 	{

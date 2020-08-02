@@ -1,6 +1,6 @@
 /* constants */
 
-$breakpoint: 45rem;
+$breakpoint: 900px;
 
 :root
 {
@@ -31,6 +31,9 @@ $breakpoint: 45rem;
 
 	--padding-page-side: 2em;
 	--padding: 3em;
+
+	--column-width: calc(1ch + 33vw);
+	--column-gap: 7vw;
 }
 
 @media (prefers-color-scheme: dark)
