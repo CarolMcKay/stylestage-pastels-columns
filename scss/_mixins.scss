@@ -13,3 +13,30 @@
 		outline-color: var(--col-outline);
 	}
 }
+
+@mixin button-link
+{
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+	background-color: var(--col-button-bg);
+	padding: 0.25em 1em;
+	border-radius: 1em;
+	background-clip: padding-box;
+	border:6px double var(--col-button-bg);
+	margin: 0.25em;
+	transition:
+		color ease-in 150ms,
+		background-color ease-in 150ms,
+		border-color ease-in 150ms
+		;
+
+	&:hover,
+	&:active,
+	&:focus
+	{
+		color: var(--col-button-text-hover);
+		background-color: var(--col-button-bg-hover);
+		border-color: var(--col-button-bg-hover);
+	}
+}

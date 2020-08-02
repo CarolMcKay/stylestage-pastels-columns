@@ -1,0 +1,45 @@
+// animations
+
+@keyframes site-title
+{
+	0%
+	{
+		color: inherit;
+	}
+
+	100%
+	{
+		color: transparent;
+	}
+}
+
+@keyframes site-title-reveal
+{
+	0%
+	{
+		clip-path: circle(105% at 50% 50%);
+	}
+
+	100%
+	{
+		clip-path: circle(0 at 50% 50%);
+	}
+}
+
+header
+{
+	h1
+	{
+		animation: site-title 3s linear forwards;
+		position: relative;
+
+		&::after
+		{
+			content: " ";
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background-color: var(--col-bg);
+			animation: site-title-reveal 1s linear forwards;
+		}
+	}
+}

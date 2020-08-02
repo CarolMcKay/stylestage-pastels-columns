@@ -11,13 +11,12 @@ body
 	font-family: var(--ff-serif);
 }
 
-h1
+h1 // see animations for color
 {
 	font-family: var(--ff-cursive);
 	font-size: var(--fs-h1-fallback);
 	font-size: var(--fs-h1);
 	text-align: center;
-	color: transparent;
 	background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
 	background-clip: text;
 	background-repeat: no-repeat;
@@ -56,6 +55,27 @@ li
 	font-size: var(--fs-text);
 }
 
+blockquote
+{
+	margin: var(--padding);
+	column-span: all;
+	font-style: italic;
+
+	p
+	{
+		font-size: 138%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-inline-start: auto;
+		margin-inline-end: auto;
+	}
+
+	:last-child
+	{
+		margin-bottom: 0;
+	}
+}
+
 header .container
 {
 	text-align: center;
@@ -64,5 +84,30 @@ header .container
 	{
 		margin-bottom: 1rem;
 		margin-block-end: 1rem;
+	}
+}
+
+#main .container > p:first-of-type::first-letter
+{
+	background-color: var(--col-accent);
+	padding: 0.2em 0.1em;
+	margin-right: 0.1em;
+	margin-inline-end: 0.1em;
+	font-size: var(--padding);
+	line-height: 1;
+	float: left;
+}
+
+.skip-link
+{
+	transition:
+	font-size ease-in 100ms,
+	opacity ease-in 100ms
+	;
+
+	&:not(:hover):not(:focus)
+	{
+		font-size: 90%;
+		opacity: 0.5;
 	}
 }

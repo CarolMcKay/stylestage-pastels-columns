@@ -1,5 +1,8 @@
 /* menu and links */
 
+@use 'constants' as *;
+@use 'mixins' as *;
+
 nav
 {
 	position: var(--position);
@@ -14,80 +17,102 @@ nav
 
 aside
 {
-	font-weight: bold;
-	background-color: var(--col-bg);
-	border:var(--rule);
-	transition: transform 300ms ease-in;
-
+	padding: var(--padding) 0;
+	
 	a
 	{
 		color: inherit;
 	}
 }
 
-.profile // aside
+@media screen and (min-width: $breakpoint)
 {
-	padding: 1em 3em 1em 1em;
-	position: var(--position);
-	bottom: 5%;
-	inset-block-end: 5%;
-	left: 0;
-	inset-inline-start: 0;
-	transform: translateX(-87%);
-
-	&:hover,
-	&:active,
-	&:focus
+	aside
 	{
-		transform: translateX(0);
+		background-color: var(--col-bg);
+		border:var(--rule);
+		transition: transform 300ms ease-in;
+		position: var(--position);
+		bottom: 0;
+		inset-block-end: 0;
+		height: 18rem;
+		block-size: 18rem;
 	}
 
-	&:focus-within // seperate so it doesn't break :hover in ie11
+	.profile // aside
 	{
-		transform: translateX(0);
+		bottom: 0;
+		inset-block-end: 0;
+		left: 0;
+		inset-inline-start: 0;
+		transform: translateX(-85%);
+		padding: 1em var(--padding) 1em 1em;
+
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(0);
+		}
+
+		&:focus-within // seperate so it doesn't break :hover in ie11
+		{
+			transform: translateX(0);
+		}
 	}
-}
 
-#styles // aside
-{
-	order:1;
-	margin-top: 3rem;
-	padding-bottom: 1.5em;
-	padding-block-end: 1.5em;
-
-	h2
+	#profile-title,
+	#styles h2
 	{
-		padding: 0 0.5em;
+		cursor: pointer;
+		color: var(--col-menu);
+		background-color: var(--col-cta);
+		margin: 0;
+		position: absolute;
+		top: 0;
+		cursor: pointer;
+		padding: 0.5em 0 0.5em 0.25em;
+		white-space: nowrap;
+		height: 100%;
+		inline-size: 100%;
 	}
 
-	ul, .container > a
+	#profile-title
 	{
-		margin-left: 1.5em;
-		margin-inline-start: 1.5em;
-		margin-right: 1.5em;
-		margin-inline-end: 1.5em;
+		right: 0;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg);
+		transform-origin: center;
+		text-align: right;
 	}
-}
 
-#profile-title,
-#styles h2
-{
-	cursor: pointer;
-	color: var(--col-menu);
-	background-color: var(--col-cta);
-}
+	#styles // aside
+	{
+		width: max-content;
+		padding: 1em 1em 1em var(--padding);
+		bottom: 0;
+		inset-block-end: 0;
+		left: 100%;
+		inset-inline-start: 100%;
+		transform: translateX(-2.25rem);
 
-#profile-title
-{
-	margin: 0;
-	writing-mode: vertical-rl;
-	position: absolute;
-	top: 0;
-	right: 0;
-	inset: 0 0 auto auto;
-	cursor: pointer;
-	padding: 0.5em 0 0.5em 0.25em;
-	height: 100%;
-	inline-size: 100%;
-	white-space: nowrap;
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(-100%);
+		}
+
+		&:focus-within // seperate so it doesn't break :hover in ie11
+		{
+			transform: translateX(-100%);
+		}
+
+		h2
+		{
+			left: 0;
+			font-size: var(--fs-h4);
+			writing-mode: vertical-lr;
+		}
+	}
 }

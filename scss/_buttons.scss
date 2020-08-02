@@ -1,0 +1,12 @@
+// button look
+
+@use "_constants" as *;
+@use "_mixins" as *;
+
+#files
+{
+	a
+	{
+		@include button-link;
+	}
+}

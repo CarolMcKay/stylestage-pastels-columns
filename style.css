@@ -12,12 +12,18 @@
   --col-cta: Teal;
   --col-outline: var(--col-accent);
   --col-text: #333;
+  --col-text-shadow: rgba(51, 51, 51, 0.05);
   --col-bg: wheat;
   --col-menu: white;
   --col-selection: var(--col-bg);
   --col-selectionbg: var(--col-text);
   --col-placeholder: #555;
+  --col-button-bg: var(--col-accent);
+  --col-button-text-hover: var(--col-menu);
+  --col-button-bg-hover: var(--col-cta);
   --rule: 1px dashed rgba(0, 0, 0, 0.2);
+  --padding-page-side: 2em;
+  --padding: 3em;
   font-size: 16px;
   color: var(--col-text);
   background: var(--col-bg)
@@ -89,9 +95,9 @@ dd {
   margin-inline-start: 0
 }
 li {
-  margin-bottom: 1em;
-  -webkit-margin-after: 1em;
-  margin-block-end: 1em
+  margin-bottom: .5em;
+  -webkit-margin-after: .5em;
+  margin-block-end: .5em
 }
 aside ul,
 nav ul {
@@ -124,7 +130,9 @@ a {
   }
 }
 a:focus {
-  outline-color: var(--col-outline)
+  outline-color: var(--col-outline);
+  margin-top: -1em;
+  margin-bottom: 1em
 }
 ::selection {
   color: var(--col-selection);
@@ -153,14 +161,13 @@ details summary {
 body {
   font-family: var(--ff-serif);
   align-items: center;
-  padding: 1em 2em 0
+  padding: 1em var(--padding-page-side) 0
 }
 h1 {
   font-family: var(--ff-cursive);
   font-size: var(--fs-h1-fallback);
   font-size: var(--fs-h1);
   text-align: center;
-  color: transparent;
   background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
   -webkit-background-clip: text;
   background-clip: text;
@@ -183,6 +190,23 @@ li,
 p {
   font-size: var(--fs-text)
 }
+blockquote {
+  margin: var(--padding);
+  column-span: all;
+  font-style: italic
+}
+blockquote p {
+  font-size: 138%;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-margin-start: auto;
+  margin-inline-start: auto;
+  -webkit-margin-end: auto;
+  margin-inline-end: auto
+}
+blockquote :last-child {
+  margin-bottom: 0
+}
 header .container {
   text-align: center
 }
@@ -191,6 +215,23 @@ header .container p {
   margin-bottom: 1rem;
   -webkit-margin-after: 1rem;
   margin-block-end: 1rem
+}
+#main .container > p:first-of-type::first-letter {
+  background-color: var(--col-accent);
+  padding: .2em .1em;
+  margin-right: .1em;
+  -webkit-margin-end: .1em;
+  margin-inline-end: .1em;
+  font-size: var(--padding);
+  line-height: 1;
+  float: left
+}
+.skip-link {
+  transition: font-size .1s ease-in,opacity .1s ease-in
+}
+.skip-link:not(:hover):not(:focus) {
+  font-size: 90%;
+  opacity: .5
 }
 nav {
   position: var(--position);
@@ -203,85 +244,10 @@ nav {
   background-color: var(--col-cta)
 }
 aside {
-  font-weight: 700;
-  background-color: var(--col-bg);
-  border: var(--rule);
-  transition: transform .3s ease-in
+  padding: var(--padding) 0
 }
 aside a {
   color: inherit
-}
-.profile {
-  padding: 1em 3em 1em 1em;
-  position: var(--position);
-  bottom: 5%;
-  inset-block-end: 5%;
-  left: 0;
-  inset-inline-start: 0;
-  transform: translateX(-87%)
-}
-.profile:active,
-.profile:focus,
-.profile:hover {
-  transform: translateX(0)
-}
-.profile:focus-within {
-  transform: translateX(0)
-}
-#styles {
-  order: 1;
-  margin-top: 3rem;
-  padding-bottom: 1.5em;
-  -webkit-padding-after: 1.5em;
-  padding-block-end: 1.5em
-}
-#styles h2 {
-  padding: 0 .5em
-}
-#styles .container > a,
-#styles ul {
-  margin-left: 1.5em;
-  -webkit-margin-start: 1.5em;
-  margin-inline-start: 1.5em;
-  margin-right: 1.5em;
-  -webkit-margin-end: 1.5em;
-  margin-inline-end: 1.5em
-}
-#profile-title,
-#styles h2 {
-  cursor: pointer;
-  color: var(--col-menu);
-  background-color: var(--col-cta)
-}
-#profile-title {
-  margin: 0;
-  -webkit-writing-mode: vertical-rl;
-  -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  position: absolute;
-  top: 0;
-  right: 0;
-  inset: 0 0 auto auto;
-  cursor: pointer;
-  padding: .5em 0 .5em .25em;
-  height: 100%;
-  inline-size: 100%;
-  white-space: nowrap
-}
-.link-github svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: var(--col-accent)
-}
-a:active,
-a:focus,
-a:hover {
-  text-decoration: none
-}
-.page-footer .container,
-section.container {
-  padding: 3rem 0;
-  border-bottom: var(--rule)
 }
 @media screen and (min-width:45rem) {
   :root {
@@ -290,20 +256,213 @@ section.container {
   h1 {
     line-height: initial
   }
+  aside {
+    background-color: var(--col-bg);
+    border: var(--rule);
+    transition: transform .3s ease-in;
+    position: var(--position);
+    bottom: 0;
+    inset-block-end: 0;
+    height: 18rem;
+    block-size: 18rem
+  }
+  .profile {
+    bottom: 0;
+    inset-block-end: 0;
+    left: 0;
+    inset-inline-start: 0;
+    transform: translateX(-85%);
+    padding: 1em var(--padding) 1em 1em
+  }
+  .profile:active,
+  .profile:focus,
+  .profile:hover {
+    transform: translateX(0)
+  }
+  .profile:focus-within {
+    transform: translateX(0)
+  }
+  #profile-title,
+  #styles h2 {
+    color: var(--col-menu);
+    background-color: var(--col-cta);
+    margin: 0;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    padding: .5em 0 .5em .25em;
+    white-space: nowrap;
+    height: 100%;
+    inline-size: 100%
+  }
+  #profile-title {
+    right: 0;
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transform-origin: center;
+    text-align: right
+  }
+  #styles {
+    width: -webkit-max-content;
+    width: max-content;
+    padding: 1em 1em 1em var(--padding);
+    bottom: 0;
+    inset-block-end: 0;
+    left: 100%;
+    inset-inline-start: 100%;
+    transform: translateX(-2.25rem)
+  }
+  #styles:active,
+  #styles:focus,
+  #styles:hover {
+    transform: translateX(-100%)
+  }
+  #styles:focus-within {
+    transform: translateX(-100%)
+  }
+  #styles h2 {
+    left: 0;
+    font-size: var(--fs-h4);
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: tb-lr;
+    writing-mode: vertical-lr
+  }
   .page-footer .container,
   section.container {
     columns: calc(3ch + 33vw) 2;
     column-gap: 7vw;
     column-rule: var(--rule)
   }
+  .page-footer .container h2,
+  section.container h2 {
+    column-span: all
+  }
+  #contribute section.container {
+    columns: unset;
+    max-width: calc(3ch + 33vw)
+  }
+  #contribute {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "contribute-intro files" "contribute-steps files"
+  }
+  #contribute section:nth-of-type(1) {
+    grid-area: contribute-intro
+  }
+  #contribute section:nth-of-type(2) {
+    grid-area: contribute-steps
+  }
+  #contribute footer {
+    grid-area: files;
+    display: grid
+  }
 }
-#main .container > p:first-of-type::first-letter {
-  background-color: var(--col-accent);
-  padding: .2em .1em;
-  margin-right: .1em;
-  -webkit-margin-end: .1em;
-  margin-inline-end: .1em;
-  font-size: 3em;
-  line-height: 1;
-  float: left
+@keyframes site-title {
+  0% {
+    color: inherit
+  }
+  100% {
+    color: transparent
+  }
+}
+@keyframes site-title-reveal {
+  0% {
+    -webkit-clip-path: circle(105% at 50% 50%);
+    clip-path: circle(105% at 50% 50%)
+  }
+  100% {
+    -webkit-clip-path: circle(0 at 50% 50%);
+    clip-path: circle(0 at 50% 50%)
+  }
+}
+header h1 {
+  animation: 3s linear forwards site-title;
+  position: relative
+}
+header h1::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--col-bg);
+  animation: 1s linear forwards site-title-reveal
+}
+#files a {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background-color: var(--col-button-bg);
+  padding: .25em 1em;
+  border-radius: 1em;
+  background-clip: padding-box;
+  border: 6px double var(--col-button-bg);
+  margin: .25em;
+  transition: color 150ms ease-in,background-color 150ms ease-in,border-color 150ms ease-in
+}
+#files a:active,
+#files a:focus,
+#files a:hover {
+  color: var(--col-button-text-hover);
+  background-color: var(--col-button-bg-hover);
+  border-color: var(--col-button-bg-hover)
+}
+.link-github {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end
+}
+.link-github svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--col-accent)
+}
+header .link-github {
+  justify-content: center
+}
+a:active,
+a:hover {
+  text-decoration: none
+}
+#files .container,
+.page-footer .container,
+section.container {
+  padding: 3rem 0;
+  border-bottom: var(--rule)
+}
+#files .container {
+  padding: var(--padding);
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: -webkit-max-content repeat(3,auto);
+  grid-template-rows: max-content repeat(3,auto);
+  background-color: var(--col-cta);
+  background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900)
+}
+#files .container h3 {
+  grid-column: 1/-1;
+  color: var(--col-menu);
+  text-shadow: 1px 1px .5em var(--col-text-shadow),-1px -1px .5em var(--col-text-shadow),-1px 1px .5em var(--col-text-shadow),1px -1px .5em var(--col-text-shadow)
+}
+#files .container a {
+  align-self: start
+}
+#files .container .link-downloadcss {
+  grid-column: 1/span 2
+}
+#files .container .link-downloadhtml {
+  grid-column: 2/4
+}
+#files .container .link-codepen {
+  grid-column: 3/span 2
+}
+.page-footer ul {
+  break-inside: avoid-column
+}
+.page-footer ul li {
+  margin-bottom: 0
 }

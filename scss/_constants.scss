@@ -17,12 +17,20 @@ $breakpoint: 45rem;
 	--col-cta: Teal;
 	--col-outline: var(--col-accent);
 	--col-text: #333;
+	--col-text-shadow: rgba(51, 51, 51, 0.05);
 	--col-bg: wheat;
 	--col-menu: white;
 	--col-selection: var(--col-bg);
 	--col-selectionbg: var(--col-text);
 	--col-placeholder: #555;
+	--col-button-bg: var(--col-accent);
+	--col-button-text-hover: var(--col-menu);
+	--col-button-bg-hover: var(--col-cta);
+
 	--rule: 1px dashed rgba(0, 0, 0, 0.2);
+
+	--padding-page-side: 2em;
+	--padding: 3em;
 }
 
 @media (prefers-color-scheme: dark)
