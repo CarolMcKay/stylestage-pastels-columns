@@ -1,0 +1,237 @@
+// layout
+
+@use "_constants" as *;
+@use "_mixins" as *;
+
+body
+{
+	align-items: center;
+	padding: 1em var(--padding-page-side) 0;
+}
+
+.link-github
+{
+	position: relative;
+	display: inline-flex;
+	display: inline flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+
+	svg
+	{
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--col-accent);
+	}
+}
+
+header .link-github
+{
+	justify-content: center;
+}
+
+a
+{
+	&:hover,
+	&:active
+	{
+		text-decoration: none;
+	}
+}
+
+section.container,
+.page-footer .container,
+#files .container // footer
+{
+	padding: 3rem 0;
+	border-bottom: var(--rule);
+}
+
+#about
+{
+	section + section ul li
+	{
+		&::after
+		{
+			display: block;
+			margin: 1em 0 1em -1em;
+			padding: 0.5em;
+			background-color: rgba(2555, 255, 255, 0.4);
+			opacity: 0.7;
+		}
+
+		&:nth-of-type(1)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox";
+			}
+		}
+		&:nth-of-type(2)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Glossary/Grid";
+			}
+		}
+		&:nth-of-type(3)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties";
+			}
+		}
+		&:nth-of-type(4)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/@supports";
+			}
+		}
+		&:nth-of-type(5)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/gradient";
+			}
+		}
+		&:nth-of-type(6)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/animation";
+			}
+		}
+		&:nth-of-type(7)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d";
+			}
+		}
+		&:nth-of-type(8)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit";
+			}
+		}
+		&:nth-of-type(9)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within";
+			}
+		}
+		&:nth-of-type(10)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/calc";
+			}
+		}
+		&:nth-of-type(11)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/clamp";
+			}
+		}
+		&:nth-of-type(12)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS#Viewport_units";
+			}
+		}
+		&:nth-of-type(13)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin";
+			}
+		}
+		&:nth-of-type(14)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#position_sticky";
+			}
+		}
+		&:nth-of-type(15)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/display#Which_syntax_should_you_use_now";
+			}
+		}
+		&:nth-of-type(16)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries";
+			}
+		}
+		&:nth-of-type(17)
+		{
+			&::after
+			{
+				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide";
+			}
+		}
+	}
+}
+
+#files .container // footer
+{
+	padding: var(--padding);
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows: max-content repeat(3, auto);
+	background-color: var(--col-cta);
+	background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	h3
+	{
+		grid-column: 1 / -1;
+		color: var(--col-menu);
+		text-shadow:
+			1px 1px 0.5em var(--col-text-shadow),
+			-1px -1px 0.5em var(--col-text-shadow),
+			-1px 1px 0.5em var(--col-text-shadow),
+			1px -1px 0.5em var(--col-text-shadow)
+		;
+	}
+
+	a
+	{
+		align-self: start;
+	}
+
+	.link-downloadcss
+	{
+		grid-column: 1 / span 2;
+	}
+
+	.link-downloadhtml
+	{
+		grid-column: 2 / 4;
+	}
+
+	.link-codepen
+	{
+		grid-column: 3 / span 2;
+	}
+}
+
+.page-footer ul // for when in columns
+{
+	break-inside: avoid-column;
+
+	li
+	{
+		margin-bottom: 0; // because the a tags have padding
+	}
+}
