@@ -5,6 +5,11 @@
 
 @media screen and (min-width: $breakpoint)
 {
+	#main
+	{
+		padding: 0 2em; // cater for sticky nav
+	}
+
 	section.container,
 	.page-footer .container
 	{

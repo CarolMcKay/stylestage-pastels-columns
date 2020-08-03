@@ -9,6 +9,14 @@ body
 	padding: 1em var(--padding-page-side) 0;
 }
 
+@media screen and (max-width: $breakpoint)
+{
+	body
+	{
+		--padding-page-side: 3em; // cater for fixed menu
+	}
+}
+
 .link-github
 {
 	position: relative;

@@ -5,6 +5,14 @@
 
 nav
 {
+	&::before
+	{
+		content: "Menu";
+		display: block;
+		text-align: center;
+		font-weight: 700;
+	}
+
 	ul
 	{
 		padding: 1em 2em;
@@ -99,14 +107,22 @@ nav
 	}
 }
 
+nav
+{
+	position: fixed;
+	z-index: 1;
+	height: 1px;
+	overflow: visible;
+	top: 30%;
+	inset-block-start: 30%;
+	right: 0;
+}
+
 @media screen and (min-width: $breakpoint)
 {
 	nav
 	{
 		position: sticky;
-		z-index: 1;
-		height: 1px;
-		overflow: visible;
 		top: 0;
 		inset-block-start: 0;
 		left: 100%;
@@ -115,12 +131,12 @@ nav
 	}
 }
 
-@media screen and (min-width: $breakpoint) and (max-width: 1439px)
+@media screen and (max-width: 1439px)
 {
 	nav
 	{
 		transition: transform 300ms ease-in;
-		transform: translateX(85%);
+		transform: translateX(82%);
 
 		&:hover,
 		&:active,

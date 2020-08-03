@@ -57,6 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  word-break: break-word;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -255,6 +256,12 @@ ol li::marker {
   font-size: 90%;
   opacity: .5
 }
+nav::before {
+  content: "Menu";
+  display: block;
+  text-align: center;
+  font-weight: 700
+}
 nav ul::after,
 nav ul::before {
   position: absolute;
@@ -310,10 +317,19 @@ nav ul a:hover {
   -webkit-text-decoration-color: var(--col-accent);
   text-decoration-color: var(--col-accent)
 }
-@media screen and (min-width:900px) and (max-width:1439px) {
+nav {
+  position: fixed;
+  z-index: 1;
+  height: 1px;
+  overflow: visible;
+  top: 30%;
+  inset-block-start: 30%;
+  right: 0
+}
+@media screen and (max-width:1439px) {
   nav {
     transition: transform .3s ease-in;
-    transform: translateX(85%)
+    transform: translateX(82%)
   }
   nav:active,
   nav:focus,
@@ -340,9 +356,6 @@ aside a {
   nav {
     position: -webkit-sticky;
     position: sticky;
-    z-index: 1;
-    height: 1px;
-    overflow: visible;
     top: 0;
     inset-block-start: 0;
     left: 100%;
@@ -426,6 +439,9 @@ aside a {
     -ms-writing-mode: tb-lr;
     writing-mode: vertical-lr
   }
+  #main {
+    padding: 0 2em
+  }
   .page-footer .container,
   section.container {
     columns: var(--column-width) 2;
@@ -506,6 +522,11 @@ header h1 {
   width: -webkit-max-content;
   width: max-content;
   margin: 1em auto 0
+}
+@media screen and (max-width:900px) {
+  body {
+    --padding-page-side: 3em
+  }
 }
 .link-github {
   position: relative;
