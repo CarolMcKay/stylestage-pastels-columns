@@ -127,6 +127,8 @@ ol
 
 .skip-link
 {
+	position: absolute;
+	top: 0.75em;
 	transition:
 		font-size ease-in 100ms,
 		opacity ease-in 100ms

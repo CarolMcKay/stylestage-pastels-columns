@@ -107,7 +107,8 @@ nav ul {
   list-style-type: none;
   padding: 1em 2em;
   color: var(--col-menu);
-  background-color: var(--col-cta)
+  background-color: var(--col-cta);
+  position: relative
 }
 nav a {
   color: inherit;
@@ -246,16 +247,68 @@ ol li::marker {
   font-size: 1.5em
 }
 .skip-link {
+  position: absolute;
+  top: .75em;
   transition: font-size .1s ease-in,opacity .1s ease-in
 }
 .skip-link:not(:hover):not(:focus) {
   font-size: 90%;
   opacity: .5
 }
+nav ul::after,
+nav ul::before {
+  position: absolute;
+  left: .25em;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--col-bg);
+  -webkit-clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)
+}
+nav ul::before {
+  top: .25em;
+  content: "menu";
+  color: transparent
+}
+nav ul::after {
+  bottom: .25em;
+  content: " "
+}
+nav ul li:first-child::after,
+nav ul li:last-child::after {
+  content: " ";
+  position: absolute;
+  right: .25em;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--col-bg);
+  -webkit-clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  clip-path: polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)
+}
+nav ul li:first-child::after {
+  top: .25em
+}
+nav ul li:last-child::after {
+  bottom: .25em
+}
+nav ul a[href^="#"] {
+  position: relative;
+  padding-left: 1.25em
+}
 nav ul a[href^="#"]::before {
+  position: absolute;
+  left: 0;
   font-family: FontAwesome;
   font-weight: 400;
   content: ""
+}
+nav ul a:active,
+nav ul a:focus,
+nav ul a:hover {
+  color: var(--col-bg);
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--col-accent);
+  text-decoration-color: var(--col-accent)
 }
 @media screen and (min-width:900px) and (max-width:1439px) {
   nav {
@@ -317,10 +370,12 @@ aside a {
   .profile:active,
   .profile:focus,
   .profile:hover {
-    transform: translateX(0)
+    transform: translateX(0);
+    z-index: 2
   }
   .profile:focus-within {
-    transform: translateX(0)
+    transform: translateX(0);
+    z-index: 2
   }
   #profile-title,
   #styles h2 {
@@ -357,10 +412,12 @@ aside a {
   #styles:active,
   #styles:focus,
   #styles:hover {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
+    z-index: 2
   }
   #styles:focus-within {
-    transform: translateX(-100%)
+    transform: translateX(-100%);
+    z-index: 2
   }
   #styles h2 {
     left: 0;
@@ -408,31 +465,14 @@ aside a {
     color: transparent
   }
 }
-@keyframes site-title-reveal {
-  0% {
-    -webkit-clip-path: circle(105% at 50% 50%);
-    clip-path: circle(105% at 50% 50%)
-  }
-  100% {
-    -webkit-clip-path: circle(0 at 50% 50%);
-    clip-path: circle(0 at 50% 50%)
-  }
-}
 header h1 {
   animation: 3s linear forwards site-title;
   position: relative
 }
-header h1::after {
-  content: " ";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--col-bg);
-  animation: 1s linear forwards site-title-reveal
-}
-#files a {
+#files a,
+.link-allstyles,
+.link-guidelines,
+.profile .container > a {
   text-align: center;
   text-decoration: none;
   color: inherit;
@@ -446,13 +486,31 @@ header h1::after {
 }
 #files a:active,
 #files a:focus,
-#files a:hover {
+#files a:hover,
+.link-allstyles:active,
+.link-allstyles:focus,
+.link-allstyles:hover,
+.link-guidelines:active,
+.link-guidelines:focus,
+.link-guidelines:hover,
+.profile .container > a:active,
+.profile .container > a:focus,
+.profile .container > a:hover {
   color: var(--col-button-text-hover);
   background-color: var(--col-button-bg-hover);
   border-color: var(--col-button-bg-hover)
 }
+.link-allstyles,
+.profile .container > a {
+  display: block;
+  width: -webkit-max-content;
+  width: max-content;
+  margin: 1em auto 0
+}
 .link-github {
-  display: flex;
+  position: relative;
+  display: inline-flex;
+  display: inline flex;
   flex-direction: row-reverse;
   justify-content: flex-end
 }
@@ -473,6 +531,64 @@ a:hover {
 section.container {
   padding: 3rem 0;
   border-bottom: var(--rule)
+}
+#about section + section ul li::after {
+  display: block;
+  margin: 1em 0 1em -1em;
+  padding: .5em;
+  background-color: rgba(255,255,255,.4);
+  opacity: .7
+}
+#about section + section ul li:nth-of-type(1)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox"
+}
+#about section + section ul li:nth-of-type(2)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Glossary/Grid"
+}
+#about section + section ul li:nth-of-type(3)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
+}
+#about section + section ul li:nth-of-type(4)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/@supports"
+}
+#about section + section ul li:nth-of-type(5)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/gradient"
+}
+#about section + section ul li:nth-of-type(6)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/animation"
+}
+#about section + section ul li:nth-of-type(7)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d"
+}
+#about section + section ul li:nth-of-type(8)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"
+}
+#about section + section ul li:nth-of-type(9)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within"
+}
+#about section + section ul li:nth-of-type(10)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/calc"
+}
+#about section + section ul li:nth-of-type(11)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"
+}
+#about section + section ul li:nth-of-type(12)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS#Viewport_units"
+}
+#about section + section ul li:nth-of-type(13)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin"
+}
+#about section + section ul li:nth-of-type(14)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#position_sticky"
+}
+#about section + section ul li:nth-of-type(15)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/display#Which_syntax_should_you_use_now"
+}
+#about section + section ul li:nth-of-type(16)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
+}
+#about section + section ul li:nth-of-type(17)::after {
+  content: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide"
 }
 #files .container {
   padding: var(--padding);

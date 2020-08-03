@@ -3,10 +3,19 @@
 @use "_constants" as *;
 @use "_mixins" as *;
 
-#files
+#files a,
+.link-guidelines,
+.link-allstyles,
+.profile .container > a
 {
-	a
-	{
-		@include button-link;
-	}
+	@include button-link;
+}
+
+
+.link-allstyles,
+.profile .container > a
+{
+	display: block;
+	width: max-content;
+	margin:1em auto 0;
 }
