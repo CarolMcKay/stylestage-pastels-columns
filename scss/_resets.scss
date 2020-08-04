@@ -50,6 +50,14 @@ p, li, dd
 	max-width: 70ch;
 }
 
+form
+{
+	li
+	{
+		max-width: none;
+	}
+}
+
 /* margins */
 
 *

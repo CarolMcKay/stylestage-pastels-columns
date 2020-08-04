@@ -2,7 +2,7 @@
 
 @use "_constants" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Italianno&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Rowdies:wght@700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 /* see constants */
@@ -25,8 +25,13 @@ h1 // see animations for color
 	font-family: var(--ff-cursive);
 	font-size: var(--fs-h1-fallback);
 	font-size: var(--fs-h1);
+	font-weight: 700;
 	text-align: center;
-	background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+	background-image:
+		url(https://source.unsplash.com/KOtu2rPqWs4/1600x900),
+		linear-gradient(var(--col-h1-fallback), var(--col-h1-fallback)) // fallback incase image doesn't load
+		// linear-gradient(var(--col-accent) 45%, var(--col-cta) 50%, var(--col-accent)) // fallback incase image doesn't load
+		;
 	background-clip: text;
 	background-repeat: no-repeat;
 	background-size: cover;
