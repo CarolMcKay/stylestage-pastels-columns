@@ -7,7 +7,7 @@
 {
 	#main
 	{
-		padding: 0 2em; // cater for sticky nav
+		padding: 0 2em; /* cater for sticky nav */
 	}
 
 	section.container,
@@ -16,6 +16,7 @@
 		columns: var(--column-width) 2;
 		column-gap: var(--column-gap);
 		column-rule: var(--rule);
+		max-width: var(--columns-max-width); /* for webkit browsers */
 
 		h2
 		{
@@ -23,7 +24,7 @@
 		}
 	}
 
-	// short content so don't break into next column
+	/* short content so don't break into next column */
 	#contribute section.container
 	{
 		columns: unset;
@@ -53,7 +54,7 @@
 		footer
 		{
 			grid-area: files;
-			display: grid; // stretch content
+			display: grid; /* stretch content */
 		}
 	}
 }

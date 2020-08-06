@@ -20,7 +20,7 @@ header
 	}
 }
 
-h1 // see animations for color
+h1 /*see animations for color*/
 {
 	font-family: var(--ff-cursive);
 	font-size: var(--fs-h1-fallback);
@@ -29,15 +29,14 @@ h1 // see animations for color
 	text-align: center;
 	background-image:
 		url(https://source.unsplash.com/KOtu2rPqWs4/1600x900),
-		linear-gradient(var(--col-h1-fallback), var(--col-h1-fallback)) // fallback incase image doesn't load
-		// linear-gradient(var(--col-accent) 45%, var(--col-cta) 50%, var(--col-accent)) // fallback incase image doesn't load
+		linear-gradient(var(--col-h1-fallback), var(--col-h1-fallback)) /*fallback incase image doesn't load*/
 		;
 	background-clip: text;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: left bottom;
 	margin: 0.25em 0;
-	white-space: nowrap; // for mobile layout
+	white-space: nowrap; /*for mobile layout*/
 }
 
 @media screen and (min-width: $breakpoint)

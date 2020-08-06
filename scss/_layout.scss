@@ -13,7 +13,7 @@ body
 {
 	body
 	{
-		--padding-page-side: 3em; // cater for fixed menu
+		--padding-page-side: 3em; /* cater for fixed menu */
 	}
 }
 
@@ -49,148 +49,189 @@ a
 
 section.container,
 .page-footer .container,
-#files .container // footer
+#files .container /* footer */
 {
 	padding: 3rem 0;
 	border-bottom: var(--rule);
 }
 
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
+for browsers that support list ::marker - currently only firefox
+system font icons picked from the character map */
+@counter-style style-counter
+{
+	system: cyclic;
+	symbols: "\1f302" "\1f343" "\1f34d" "\1f346" "\1f407" "\1f414" "\1f40b" "\1f386" "\1f387" "\1f38f" "\1f404" "\1f418" "\1f419" "\1f662";
+	suffix: " ";
+	speak-as: numbers;
+}
+
 #about
 {
-	section + section ul li
+	section + section ul
 	{
-		&::after
+		list-style-type: style-counter;
+		padding-left: 1em;
+
+		@supports not (list-style-type: style-counter)
 		{
-			display: block;
-			margin: 1em 0 1em -1em;
-			padding: 0.5em;
-			background-color: rgba(2555, 255, 255, 0.4);
-			opacity: 0.7;
+			list-style-type: none;
 		}
 
-		&:nth-of-type(1)
+		li
 		{
-			&::after
+			margin: 2em 0;
+
+			&::marker
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox";
+				font-size: 2.5em;
 			}
-		}
-		&:nth-of-type(2)
-		{
-			&::after
+
+			@supports not (list-style-type: style-counter)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Glossary/Grid";
+				&::before
+				{
+					/* decoration, space */
+					content: "\1f662\0020";
+					font-size: 2.5em;
+					margin-left: -1.25em;
+				}
 			}
-		}
-		&:nth-of-type(3)
-		{
+
 			&::after
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties";
+				display: block;
+				margin: 0.25em 0 1em;
+				padding: 0.5em;
+				background-color: rgba(2555, 255, 255, 0.4);
+				opacity: 0.7;
 			}
-		}
-		&:nth-of-type(4)
-		{
-			&::after
+
+			&:nth-of-type(1)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/@supports";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox";
+				}
 			}
-		}
-		&:nth-of-type(5)
-		{
-			&::after
+			&:nth-of-type(2)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/gradient";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Glossary/Grid";
+				}
 			}
-		}
-		&:nth-of-type(6)
-		{
-			&::after
+			&:nth-of-type(3)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/animation";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties";
+				}
 			}
-		}
-		&:nth-of-type(7)
-		{
-			&::after
+			&:nth-of-type(4)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/@supports";
+				}
 			}
-		}
-		&:nth-of-type(8)
-		{
-			&::after
+			&:nth-of-type(5)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/gradient";
+				}
 			}
-		}
-		&:nth-of-type(9)
-		{
-			&::after
+			&:nth-of-type(6)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/animation";
+				}
 			}
-		}
-		&:nth-of-type(10)
-		{
-			&::after
+			&:nth-of-type(7)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/calc";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d";
+				}
 			}
-		}
-		&:nth-of-type(11)
-		{
-			&::after
+			&:nth-of-type(8)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/clamp";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit";
+				}
 			}
-		}
-		&:nth-of-type(12)
-		{
-			&::after
+			&:nth-of-type(9)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS#Viewport_units";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within";
+				}
 			}
-		}
-		&:nth-of-type(13)
-		{
-			&::after
+			&:nth-of-type(10)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/calc";
+				}
 			}
-		}
-		&:nth-of-type(14)
-		{
-			&::after
+			&:nth-of-type(11)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#position_sticky";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/clamp";
+				}
 			}
-		}
-		&:nth-of-type(15)
-		{
-			&::after
+			&:nth-of-type(12)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/display#Which_syntax_should_you_use_now";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS#Viewport_units";
+				}
 			}
-		}
-		&:nth-of-type(16)
-		{
-			&::after
+			&:nth-of-type(13)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin";
+				}
 			}
-		}
-		&:nth-of-type(17)
-		{
-			&::after
+			&:nth-of-type(14)
 			{
-				content: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide";
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning#position_sticky";
+				}
+			}
+			&:nth-of-type(15)
+			{
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/display#Which_syntax_should_you_use_now";
+				}
+			}
+			&:nth-of-type(16)
+			{
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries";
+				}
+			}
+			&:nth-of-type(17)
+			{
+				&::after
+				{
+					content: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide";
+				}
 			}
 		}
 	}
 }
 
-#files .container // footer
+
+#files .container /* footer */
 {
 	padding: var(--padding);
 	display: grid;
@@ -267,12 +308,12 @@ section.container,
 	}
 }
 
-.page-footer ul // for when in columns
+.page-footer ul /* for when in columns */
 {
 	break-inside: avoid-column;
 
 	li
 	{
-		margin-bottom: 0; // because the a tags have padding
+		margin-bottom: 0; /* because the a tags have padding */
 	}
 }

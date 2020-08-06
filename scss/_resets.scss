@@ -24,7 +24,7 @@ body
     min-block-size: 100vh;
 	margin:0;
 	overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; // smoother scrolling for iphone
+    -webkit-overflow-scrolling: touch; /* smoother scrolling for iphone */
     display: flex;
     flex-direction: column;
 	justify-content: flex-start;
@@ -50,7 +50,8 @@ p, li, dd
 	max-width: 70ch;
 }
 
-form
+form,
+nav
 {
 	li
 	{
@@ -118,8 +119,6 @@ aside
 		list-style-type: none;
 	}
 }
-
-
 
 /* colours and fonts */
 

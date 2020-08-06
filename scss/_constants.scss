@@ -33,8 +33,9 @@ $breakpoint: 900px;
 	--padding-page-side: 2em;
 	--padding: 3em;
 
-	--column-width: calc(1ch + 33vw);
-	--column-gap: 7vw;
+	--column-width: 33rem;
+	--column-gap: 7rem;
+	--columns-max-width: calc((var(--column-width) * 2) + var(--column-gap)); /* for webkit browsers */
 }
 
 @media (prefers-color-scheme: dark)
