@@ -1,3 +1,12 @@
+/*!	Resources:
+	- https://developer.mozilla.org/en-US/
+	- https://en.wikipedia.org/wiki/Web_colors
+	- https://fonts.google.com/ including a variable font
+	- https://unsplash.com/photos/KOtu2rPqWs4 Thanks to Annie Spratt for sharing their work on Unsplash.
+	- https://bennettfeely.com/clippy/
+	- https://fontawesome.com/
+*/
+
 @charset "UTF-8";
 
 @use "_constants" as *;
@@ -10,16 +19,6 @@
 @use 'layout';
 @use 'layout-desktop';
 @use 'scrollbar';
-
-
-/*	Resouces:
-	- https://developer.mozilla.org/en-US/
-	- https://en.wikipedia.org/wiki/Web_colors
-	- https://fonts.google.com/ including a variable font
-	- https://unsplash.com/photos/KOtu2rPqWs4 Thanks to Annie Spratt for sharing their work on Unsplash.
-	- https://bennettfeely.com/clippy/
-	- https://fontawesome.com/
-*/
 
 // * {	outline: 2px solid var(--col-outline); } // testing
 

@@ -13,7 +13,7 @@ body
 {
 	body
 	{
-		--padding-page-side: 3em; /* cater for fixed menu */
+		--padding-page-side: 3em; /*! cater for fixed menu */
 	}
 }
 
@@ -49,13 +49,13 @@ a
 
 section.container,
 .page-footer .container,
-#files .container /* footer */
+#files .container /*! footer */
 {
 	padding: 3rem 0;
 	border-bottom: var(--rule);
 }
 
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
+/*! https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
 for browsers that support list ::marker - currently only firefox
 system font icons picked from the character map */
 @counter-style style-counter
@@ -91,7 +91,7 @@ system font icons picked from the character map */
 			{
 				&::before
 				{
-					/* decoration, space */
+					/*! decoration, space */
 					content: "\1f662\0020";
 					font-size: 2.5em;
 					margin-left: -1.25em;
@@ -231,7 +231,7 @@ system font icons picked from the character map */
 }
 
 
-#files .container /* footer */
+#files .container /*! footer */
 {
 	padding: var(--padding);
 	display: grid;
@@ -308,12 +308,12 @@ system font icons picked from the character map */
 	}
 }
 
-.page-footer ul /* for when in columns */
+.page-footer ul /*! for when in columns */
 {
 	break-inside: avoid-column;
 
 	li
 	{
-		margin-bottom: 0; /* because the a tags have padding */
+		margin-bottom: 0; /*! because the a tags have padding */
 	}
 }

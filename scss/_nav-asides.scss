@@ -1,4 +1,4 @@
-/* menu and links */
+/*! menu and links */
 
 @use 'constants' as *;
 @use 'mixins' as *;
@@ -7,7 +7,7 @@ main
 {
 	&:focus
 	{
-		outline: none; /* turn off annoying outline in chrome */
+		outline: none; /*! turn off annoying outline in chrome */
 	}
 }
 
@@ -100,7 +100,7 @@ nav
 					left: 0;
 					font-family:'FontAwesome';
 					font-weight: normal;
-					content: "\f292"; /* hashtag */
+					content: "\f292"; /*! hashtag */
 				}
 			}
 
@@ -132,7 +132,7 @@ nav
 {
 	body
 	{
-		overflow-x: hidden; /* to cater for nav position sticky */
+		overflow-x: hidden; /*! to cater for nav position sticky */
 	}
 
 	nav
@@ -160,7 +160,7 @@ nav
 			transform: translateX(0);
 		}
 
-		&:focus-within /* seperate so it doesn't break :hover in edge */
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
 		{
 			transform: translateX(0);
 		}
@@ -191,7 +191,7 @@ aside
 		block-size: 18rem;
 	}
 
-	.profile /* aside */
+	.profile /*! aside */
 	{
 		bottom: 0;
 		inset-block-end: 0;
@@ -208,7 +208,7 @@ aside
 			z-index: 2;
 		}
 
-		&:focus-within /* seperate so it doesn't break :hover in edge */
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
 		{
 			transform: translateX(0);
 			z-index: 2;
@@ -240,7 +240,7 @@ aside
 		text-align: right;
 	}
 
-	#styles /* aside */
+	#styles /*! aside */
 	{
 		width: max-content;
 		padding: 1em 1em 1em var(--padding);
@@ -258,7 +258,7 @@ aside
 			z-index: 2;
 		}
 
-		&:focus-within /* seperate so it doesn't break :hover in edge */
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
 		{
 			transform: translateX(-100%);
 			z-index: 2;

@@ -1,31 +1,31 @@
-/* scrollbar style */
+/*! scrollbar style */
 
 @use "_constants" as *;
 
 body
 {
-    /* You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: */
+    /*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: */
 
-    /* the entire scrollbar */
+    /*! the entire scrollbar */
     &::-webkit-scrollbar
     {
         width: 14px;
         height: 14px;
     }
 
-    /* the track (progress bar) of the scrollbar */
+    /*! the track (progress bar) of the scrollbar */
     &::-webkit-scrollbar-track
     {
         background-color: var(--col-cta);
     }
 
-    /* the draggable scrolling handle */
+    /*! the draggable scrolling handle */
     &::-webkit-scrollbar-thumb
     {
         background-color: var(--col-accent);
     }
 
-    /* the buttons on the scrollbar (arrows pointing upwards and downwards) */
+    /*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
     &::-webkit-scrollbar-button {
         color: var(--col-cta);
         background-color: var(--col-accent);

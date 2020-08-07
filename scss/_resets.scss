@@ -1,13 +1,13 @@
-/* browser resets */
+/*! browser resets */
 
 @use "_constants" as *;
 @use "_mixins" as *;
 
-/* experience */
+/*! experience */
 
 html
 {
-	scroll-behavior: smooth; /* when js isn't doing it */
+	scroll-behavior: smooth; /*! when js isn't doing it */
 
 	@media (prefers-reduced-motion : reduce)
 	{
@@ -15,7 +15,7 @@ html
 	}
 }
 
-/* layout including margins */
+/*! layout including margins */
 
 body
 {
@@ -24,11 +24,16 @@ body
     min-block-size: 100vh;
 	margin:0;
 	overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; /* smoother scrolling for iphone */
+    -webkit-overflow-scrolling: touch; /*! smoother scrolling for iphone */
     display: flex;
     flex-direction: column;
 	justify-content: flex-start;
-	word-break: break-word;
+	overflow-wrap: anywhere;
+}
+
+a[class], button, input
+{
+	overflow-wrap: normal;
 }
 
 *,
@@ -45,6 +50,11 @@ picture
 	height: auto;
 }
 
+h2
+{
+	hyphens: auto;
+}
+
 p, li, dd
 {
 	max-width: 70ch;
@@ -59,7 +69,13 @@ nav
 	}
 }
 
-/* margins */
+// stop pre from overflowing the container on mobile
+pre
+{
+	white-space: pre-line;
+}
+
+/*! margins */
 
 *
 {
@@ -120,7 +136,7 @@ aside
 	}
 }
 
-/* colours and fonts */
+/*! colours and fonts */
 
 :root
 {
@@ -135,10 +151,11 @@ body
 	text-size-adjust:100%;
 	text-rendering:optimizeLegibility;
 	// text-rendering:geometricPrecision;
+	font-weight: var(--fw-text);
 	line-height: 1.6;
 }
 
-/* Inherit fonts for inputs and buttons */
+/*! Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -159,7 +176,7 @@ a
 		padding: 0.6rem  0;
 	}
 
-	/* focus outline */
+	/*! focus outline */
 	@include focus-outline;
 }
 
@@ -179,11 +196,11 @@ svg
 	fill:currentColor;
 }
 
-/* cursors, focus outlines */
+/*! cursors, focus outlines */
 
 details summary
 {
 	cursor: pointer;
-	outline: none; /* chrome fix */
-	display: block; /* edge fix */
+	outline: none; /*! chrome fix */
+	display: block; /*! edge fix */
 }

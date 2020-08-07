@@ -7,7 +7,7 @@
 {
 	#main
 	{
-		padding: 0 2em; /* cater for sticky nav */
+		padding: 0 2em; /*! cater for sticky nav */
 	}
 
 	section.container,
@@ -16,7 +16,7 @@
 		columns: var(--column-width) 2;
 		column-gap: var(--column-gap);
 		column-rule: var(--rule);
-		max-width: var(--columns-max-width); /* for webkit browsers */
+		max-width: var(--columns-max-width); /*! for webkit browsers */
 
 		h2
 		{
@@ -24,7 +24,7 @@
 		}
 	}
 
-	/* short content so don't break into next column */
+	/*! short content so don't break into next column */
 	#contribute section.container
 	{
 		columns: unset;
@@ -34,11 +34,11 @@
 	#contribute
 	{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr var(--column-gap) 1fr;
 		grid-template-rows: auto auto;
 		grid-template-areas:
-			"contribute-intro files"
-			"contribute-steps files"
+			"contribute-intro . files"
+			"contribute-steps . files"
 			;
 
 		section:nth-of-type(1)
@@ -54,7 +54,7 @@
 		footer
 		{
 			grid-area: files;
-			display: grid; /* stretch content */
+			display: grid; /*! stretch content */
 		}
 	}
 }

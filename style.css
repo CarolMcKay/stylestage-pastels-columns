@@ -1,6 +1,8 @@
 @charset "UTF-8";
+/*! fonts */
 @import url(https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Rowdies:wght@700&display=swap);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+/*! constants */
 :root {
   --ff-cursive: "Rowdies",cursive;
   --ff-serif: "Libre Caslon Text",serif;
@@ -10,6 +12,7 @@
   --fs-h3: 1.5rem;
   --fs-h4: 1.25rem;
   --fs-text: 0.95rem;
+  --fw-text: normal;
   --col-accent: salmon;
   --col-cta: Teal;
   --col-outline: var(--col-accent);
@@ -30,7 +33,7 @@
   --column-width: 33rem;
   --column-gap: 7rem;
   --columns-max-width: calc((var(--column-width) * 2) + var(--column-gap));
-  font-size: 16px;
+  /*! for webkit browsers */font-size: 16px;
   color: var(--col-text);
   background: var(--col-bg)
 }
@@ -41,14 +44,18 @@
     --rule: 1px solid rgba(255, 255, 255, 0.2)
   }
 }
+/*! sass mixins */
+/*! browser resets */
+/*! experience */
 html {
-  scroll-behavior: smooth
+  scroll-behavior: smooth/*! when js isn't doing it */
 }
 @media (prefers-reduced-motion:reduce) {
   html {
     scroll-behavior: auto
   }
 }
+/*! layout including margins */
 body {
   width: 100%;
   min-height: 100vh;
@@ -56,16 +63,22 @@ body {
   margin: 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  display: flex;
+  /*! smoother scrolling for iphone */display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  word-break: break-word;
+  overflow-wrap: anywhere;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  font-weight: var(--fw-text);
   line-height: 1.6
+}
+a[class],
+button,
+input {
+  overflow-wrap: normal
 }
 *,
 ::after,
@@ -86,6 +99,10 @@ form li,
 nav li {
   max-width: none
 }
+pre {
+  white-space: pre-line
+}
+/*! margins */
 * {
   margin-top: 0;
   -webkit-margin-before: 0;
@@ -126,6 +143,8 @@ aside ul {
   padding-left: 0;
   list-style-type: none
 }
+/*! colours and fonts */
+/*! Inherit fonts for inputs and buttons */
 button,
 input,
 select,
@@ -137,7 +156,7 @@ a {
   cursor: pointer;
   display: inline-block;
   padding: .4rem 0;
-  outline-offset: .15em;
+  /*! focus outline */outline-offset: .15em;
   outline: transparent solid 2px;
   transition: outline-color 150ms ease-in
 }
@@ -168,15 +187,17 @@ a:focus {
 svg {
   fill: currentColor
 }
+/*! cursors, focus outlines */
 details summary {
   cursor: pointer;
   outline: 0;
-  display: block
+  /*! chrome fix */display: block/*! edge fix */
 }
+/*! see constants */
 body {
   font-family: var(--ff-serif);
   align-items: center;
-  padding: 1em var(--padding-page-side) 0
+  padding: 1em var(--padding-page-side) 0/*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: *//*! the entire scrollbar *//*! the track (progress bar) of the scrollbar *//*! the draggable scrolling handle *//*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
 }
 header p {
   max-width: none
@@ -194,9 +215,12 @@ h1 {
   background-size: cover;
   background-position: left bottom;
   margin: .25em 0;
-  white-space: nowrap
+  white-space: nowrap/*!for mobile layout*/
 }
 h2 {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
   font-size: var(--fs-h2)
 }
 h3 {
@@ -263,8 +287,9 @@ ol li::marker {
   font-size: 90%;
   opacity: .5
 }
+/*! menu and links */
 main:focus {
-  outline: 0
+  outline: 0/*! turn off annoying outline in chrome */
 }
 nav::before {
   content: "Menu";
@@ -318,7 +343,7 @@ nav ul a[href^="#"]::before {
   left: 0;
   font-family: FontAwesome;
   font-weight: 400;
-  content: ""
+  content: ""/*! hashtag */
 }
 nav ul a:active,
 nav ul a:focus,
@@ -366,7 +391,7 @@ aside a {
     line-height: initial
   }
   body {
-    overflow-x: hidden
+    overflow-x: hidden/*! to cater for nav position sticky */
   }
   nav {
     position: -webkit-sticky;
@@ -455,28 +480,29 @@ aside a {
     writing-mode: vertical-lr
   }
   #main {
-    padding: 0 2em
+    padding: 0 2em/*! cater for sticky nav */
   }
   .page-footer .container,
   section.container {
     columns: var(--column-width) 2;
     column-gap: var(--column-gap);
     column-rule: var(--rule);
-    max-width: var(--columns-max-width)
+    max-width: var(--columns-max-width)/*! for webkit browsers */
   }
   .page-footer .container h2,
   section.container h2 {
     column-span: all
   }
-  #contribute section.container {
+  /*! short content so don't break into next column */
+#contribute section.container {
     columns: unset;
     max-width: var(--column-width)
   }
   #contribute {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr var(--column-gap) 1fr;
     grid-template-rows: auto auto;
-    grid-template-areas: "contribute-intro files" "contribute-steps files"
+    grid-template-areas: "contribute-intro . files" "contribute-steps . files"
   }
   #contribute section:nth-of-type(1) {
     grid-area: contribute-intro
@@ -486,9 +512,10 @@ aside a {
   }
   #contribute footer {
     grid-area: files;
-    display: grid
+    display: grid/*! stretch content */
   }
 }
+/*! animations */
 @keyframes site-title {
   0% {
     color: inherit
@@ -501,6 +528,7 @@ header h1 {
   animation: 3s linear forwards site-title;
   position: relative
 }
+/*! button look */
 #files a,
 .link-allstyles,
 .link-guidelines,
@@ -541,7 +569,7 @@ header h1 {
 }
 @media screen and (max-width:900px) {
   body {
-    --padding-page-side: 3em
+    --padding-page-side: 3em/*! cater for fixed menu */
   }
 }
 .link-github {
@@ -569,6 +597,9 @@ section.container {
   padding: 3rem 0;
   border-bottom: var(--rule)
 }
+/*! https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
+for browsers that support list ::marker - currently only firefox
+system font icons picked from the character map */
 @counter-style style-counter {
   system: cyclic;
   symbols: "🌂" "🍃" "🍍" "🍆" "🐇" "🐔" "🐋" "🎆" "🎇" "🎏" "🐄" "🐘" "🐙" "🙢";
@@ -590,7 +621,7 @@ section.container {
     list-style-type: none
   }
   #about section + section ul li::before {
-    content: "🙢 ";
+    /*! decoration, space */content: "🙢 ";
     font-size: 2.5em;
     margin-left: -1.25em
   }
@@ -710,8 +741,9 @@ section.container {
   break-inside: avoid-column
 }
 .page-footer ul li {
-  margin-bottom: 0
+  margin-bottom: 0/*! because the a tags have padding */
 }
+/*! scrollbar style */
 body::-webkit-scrollbar {
   width: 14px;
   height: 14px
@@ -727,3 +759,11 @@ body::-webkit-scrollbar-button {
   background-color: var(--col-accent);
   height: .5rem
 }
+/*!	Resources:
+	- https://developer.mozilla.org/en-US/
+	- https://en.wikipedia.org/wiki/Web_colors
+	- https://fonts.google.com/ including a variable font
+	- https://unsplash.com/photos/KOtu2rPqWs4 Thanks to Annie Spratt for sharing their work on Unsplash.
+	- https://bennettfeely.com/clippy/
+	- https://fontawesome.com/
+*/

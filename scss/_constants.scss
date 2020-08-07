@@ -1,4 +1,4 @@
-/* constants */
+/*! constants */
 
 $breakpoint: 900px;
 
@@ -12,6 +12,7 @@ $breakpoint: 900px;
 	--fs-h3: 1.5rem;
 	--fs-h4: 1.25rem;
 	--fs-text: 0.95rem;
+	--fw-text: normal;
 
 	--col-accent: salmon;
 	--col-cta: Teal;
@@ -35,7 +36,7 @@ $breakpoint: 900px;
 
 	--column-width: 33rem;
 	--column-gap: 7rem;
-	--columns-max-width: calc((var(--column-width) * 2) + var(--column-gap)); /* for webkit browsers */
+	--columns-max-width: calc((var(--column-width) * 2) + var(--column-gap)); /*! for webkit browsers */
 }
 
 @media (prefers-color-scheme: dark)
