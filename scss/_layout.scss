@@ -103,8 +103,9 @@ system font icons picked from the character map */
 				display: block;
 				margin: 0.25em 0 1em;
 				padding: 0.5em;
-				background-color: rgba(2555, 255, 255, 0.4);
-				opacity: 0.7;
+				background-color: var(--col-after-bg);
+				opacity: var(--col-after-opacity);
+				outline: var(--outline-after);
 			}
 
 			&:nth-of-type(1)

@@ -21,15 +21,19 @@ $breakpoint: 900px;
 	--col-text: #333;
 	--col-text-shadow: rgba(51, 51, 51, 0.05);
 	--col-bg: wheat;
+	--col-after-bg: rgba(255, 255, 255, 0.4);
+	--col-after-opacity: 0.7;
 	--col-menu: white;
 	--col-selection: var(--col-bg);
 	--col-selectionbg: var(--col-text);
 	--col-placeholder: #555;
 	--col-button-bg: var(--col-accent);
+	--col-button-text: var(--col-text);
 	--col-button-text-hover: var(--col-menu);
 	--col-button-bg-hover: var(--col-cta);
 
-	--rule: 1px dashed rgba(0, 0, 0, 0.2);
+	--rule-colour: rgba(0, 0, 0, 0.2);
+	--rule: 1px dashed var(--rule-colour);
 
 	--padding-page-side: 2em;
 	--padding: 3em;
@@ -43,9 +47,13 @@ $breakpoint: 900px;
 {
 	:root
 	{
-		--col-text: var(--col-bg);
-		--col-bg: var(--col-text);
-		--rule: 1px solid rgba(255, 255, 255, 0.2);
+		--col-text: wheat;
+		--col-bg: #333;
+		--col-after-bg: transparent;
+		--col-button-text: var(--col-bg);
+		--rule-colour: rgba(255, 255, 255, 0.2);
+		--col-after-opacity: 1;
+		--outline-after: 1px dashed rgba(245, 222, 179, 0.2);
 	}
 }
 
