@@ -47,7 +47,13 @@ module.exports = function (grunt) {
 					processors: [
 						autoprefixer(),
 						clean({
-							level: 2,
+							level: {
+								1: {
+									specialComments: "all",
+								},
+								2: {
+								}
+							},
 							format: "beautify",
 						})
 					]
