@@ -43,7 +43,9 @@ a
 	&:hover,
 	&:active
 	{
-		text-decoration: none;
+		text-decoration-style: dashed;
+		text-decoration-color: var(--col-cta);
+		text-decoration-offset: 0.25em; /*! future css */
 	}
 }
 

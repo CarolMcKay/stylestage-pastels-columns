@@ -55,6 +55,11 @@ $breakpoint: 900px;
 		--col-after-opacity: 1;
 		--outline-after: 1px dashed rgba(245, 222, 179, 0.2);
 	}
+
+	#main .container > p:first-of-type::first-letter
+	{
+		color: var(--col-bg);
+	}
 }
 
 @media screen and (min-width: $breakpoint)

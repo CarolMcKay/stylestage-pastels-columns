@@ -20,14 +20,18 @@
   --col-text: #333;
   --col-text-shadow: rgba(51, 51, 51, 0.05);
   --col-bg: wheat;
+  --col-after-bg: rgba(255, 255, 255, 0.4);
+  --col-after-opacity: 0.7;
   --col-menu: white;
   --col-selection: var(--col-bg);
   --col-selectionbg: var(--col-text);
   --col-placeholder: #555;
   --col-button-bg: var(--col-accent);
+  --col-button-text: var(--col-text);
   --col-button-text-hover: var(--col-menu);
   --col-button-bg-hover: var(--col-cta);
-  --rule: 1px dashed rgba(0, 0, 0, 0.2);
+  --rule-colour: rgba(0, 0, 0, 0.2);
+  --rule: 1px dashed var(--rule-colour);
   --padding-page-side: 2em;
   --padding: 3em;
   --column-width: 33rem;
@@ -39,9 +43,16 @@
 }
 @media (prefers-color-scheme:dark) {
   :root {
-    --col-text: var(--col-bg);
-    --col-bg: var(--col-text);
-    --rule: 1px solid rgba(255, 255, 255, 0.2)
+    --col-text: wheat;
+    --col-bg: #333;
+    --col-after-bg: transparent;
+    --col-button-text: var(--col-bg);
+    --rule-colour: rgba(255, 255, 255, 0.2);
+    --col-after-opacity: 1;
+    --outline-after: 1px dashed rgba(245, 222, 179, 0.2)
+  }
+  #main .container > p:first-of-type::first-letter {
+    color: var(--col-bg)
   }
 }
 /*! sass mixins */
@@ -66,7 +77,7 @@ body {
   /*! smoother scrolling for iphone */display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-wrap: anywhere;
+  /*! https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap */overflow-wrap: anywhere;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -152,7 +163,7 @@ textarea {
   font: inherit
 }
 a {
-  color: var(--col-text);
+  color: inherit;
   cursor: pointer;
   display: inline-block;
   padding: .4rem 0;
@@ -535,7 +546,7 @@ header h1 {
 .profile .container > a {
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  color: var(--col-button-text);
   background-color: var(--col-button-bg);
   padding: .25em 1em;
   border-radius: 1em;
@@ -589,7 +600,11 @@ header .link-github {
 }
 a:active,
 a:hover {
-  text-decoration: none
+  -webkit-text-decoration-style: dashed;
+  text-decoration-style: dashed;
+  -webkit-text-decoration-color: var(--col-cta);
+  text-decoration-color: var(--col-cta);
+  text-decoration-offset: .25em/*! future css */
 }
 #files .container,
 .page-footer .container,
@@ -630,8 +645,9 @@ system font icons picked from the character map */
   display: block;
   margin: .25em 0 1em;
   padding: .5em;
-  background-color: rgba(255,255,255,.4);
-  opacity: .7
+  background-color: var(--col-after-bg);
+  opacity: var(--col-after-opacity);
+  outline: var(--outline-after)
 }
 #about section + section ul li:nth-of-type(1)::after {
   content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox"
