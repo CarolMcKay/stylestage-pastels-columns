@@ -602,8 +602,6 @@ a:active,
 a:hover {
   -webkit-text-decoration-style: dashed;
   text-decoration-style: dashed;
-  -webkit-text-decoration-color: var(--col-cta);
-  text-decoration-color: var(--col-cta);
   text-decoration-offset: .25em/*! future css */
 }
 #files .container,
