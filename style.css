@@ -47,8 +47,8 @@
     --col-bg: #333;
     --col-after-bg: transparent;
     --col-button-text: var(--col-bg);
-    --rule-colour: rgba(255, 255, 255, 0.2);
     --col-after-opacity: 1;
+    --rule-colour: rgba(255, 255, 255, 0.2);
     --outline-after: 1px dashed rgba(245, 222, 179, 0.2)
   }
   #main .container > p:first-of-type::first-letter {
@@ -612,10 +612,11 @@ section.container {
 }
 /*! https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
 for browsers that support list ::marker - currently only firefox
-system font icons picked from the character map */
+system font icons picked from the character map
+https://emojipedia.org/bouquet/ */
 @counter-style style-counter {
   system: cyclic;
-  symbols: "🌂" "🍃" "🍍" "🍆" "🐇" "🐔" "🐋" "🎆" "🎇" "🎏" "🐄" "🐘" "🐙" "🙢";
+  symbols: "🌂" "🍃" "🍍" "🍆" "🐇" "🐔" "🐋" "🎆" "🎇" "🎏" "🐄" "🐘" "🐙" "💐";
   suffix: " ";
   speak-as: numbers
 }
@@ -634,9 +635,11 @@ system font icons picked from the character map */
     list-style-type: none
   }
   #about section + section ul li::before {
-    /*! decoration, space */content: "🙢 ";
+    /*! decoration, space */content: "🌂 ";
     font-size: 2.5em;
-    margin-left: -1.25em
+    margin-left: -1.25em;
+    -webkit-margin-start: -1.25em;
+    margin-inline-start: -1.25em
   }
 }
 #about section + section ul li::after {
@@ -780,4 +783,5 @@ body::-webkit-scrollbar-button {
 	- https://unsplash.com/photos/KOtu2rPqWs4 Thanks to Annie Spratt for sharing their work on Unsplash.
 	- https://bennettfeely.com/clippy/
 	- https://fontawesome.com/
+	- https://emojipedia.org/
 */

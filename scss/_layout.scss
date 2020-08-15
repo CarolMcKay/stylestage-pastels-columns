@@ -58,11 +58,12 @@ section.container,
 
 /*! https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style
 for browsers that support list ::marker - currently only firefox
-system font icons picked from the character map */
+system font icons picked from the character map
+https://emojipedia.org/bouquet/ */
 @counter-style style-counter
 {
 	system: cyclic;
-	symbols: "\1f302" "\1f343" "\1f34d" "\1f346" "\1f407" "\1f414" "\1f40b" "\1f386" "\1f387" "\1f38f" "\1f404" "\1f418" "\1f419" "\1f662";
+	symbols: "\1f302" "\1f343" "\1f34d" "\1f346" "\1f407" "\1f414" "\1f40b" "\1f386" "\1f387" "\1f38f" "\1f404" "\1f418" "\1f419" "\1f490";
 	suffix: " ";
 	speak-as: numbers;
 }
@@ -93,9 +94,10 @@ system font icons picked from the character map */
 				&::before
 				{
 					/*! decoration, space */
-					content: "\1f662\0020";
+					content: "\1f302\0020";
 					font-size: 2.5em;
 					margin-left: -1.25em;
+					margin-inline-start: -1.25em;
 				}
 			}
 
