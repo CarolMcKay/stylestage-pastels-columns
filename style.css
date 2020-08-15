@@ -591,6 +591,9 @@ header h1 {
   flex-direction: row-reverse;
   justify-content: flex-end
 }
+.link-github span {
+  display: flex/*! shrink to the size of it's content (svg) */
+}
 .link-github svg {
   width: 1.5rem;
   height: 1.5rem;
