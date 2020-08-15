@@ -110,6 +110,7 @@ form li,
 nav li {
   max-width: none
 }
+/*! stop pre from overflowing the container on mobile */
 pre {
   white-space: pre-line
 }
