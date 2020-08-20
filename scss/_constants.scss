@@ -54,6 +54,7 @@ $breakpoint: 900px;
 	:root
 	{
 		--col-text: wheat;
+		--col-h1-fallback: var(--col-text);
 		--col-bg: #333;
 		--col-cta: DarkOrchid;
 		--col-accent: salmon;
