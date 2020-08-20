@@ -14,7 +14,7 @@ $breakpoint: 900px;
 	--fs-text: 0.95rem;
 	--fw-text: normal;
 
-	--col-accent: salmon;
+	--col-accent: DarkOrchid;
 	--col-cta: Teal;
 	--col-outline: var(--col-accent);
 	--col-h1-fallback: #777;
@@ -24,16 +24,22 @@ $breakpoint: 900px;
 	--col-after-bg: rgba(255, 255, 255, 0.4);
 	--col-after-opacity: 0.7;
 	--col-menu: white;
+	--col-menu-hover: --col-bg;
 	--col-selection: var(--col-bg);
 	--col-selectionbg: var(--col-text);
 	--col-placeholder: #555;
-	--col-button-bg: var(--col-accent);
-	--col-button-text: var(--col-text);
+
+	--col-button-bg: var(--col-cta);
+	--col-button-text: var(--col-menu);
 	--col-button-text-hover: var(--col-menu);
-	--col-button-bg-hover: var(--col-cta);
+	--col-button-bg-hover: var(--col-text);
 
 	--rule-colour: rgba(0, 0, 0, 0.2);
 	--rule: 1px dashed var(--rule-colour);
+
+	--h1-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900);
+	--files-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+	--bunny: url(https://source.unsplash.com/u_kMWN-BWyU/160x220);
 
 	--padding-page-side: 2em;
 	--padding: 3em;
@@ -49,16 +55,27 @@ $breakpoint: 900px;
 	{
 		--col-text: wheat;
 		--col-bg: #333;
+		--col-cta: DarkOrchid;
+		--col-accent: salmon;
 		--col-after-bg: transparent;
-		--col-button-text: var(--col-bg);
+		--col-menu-hover: var(--col-text);
+		--col-button-text: var(--col-menu);
+		--col-button-text-hover: var(--col-bg);
 		--col-after-opacity: 1;
 		--rule-colour: rgba(255, 255, 255, 0.2);
 		--outline-after: 1px dashed rgba(245, 222, 179, 0.2);
+		--h1-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+		--files-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900);
 	}
 
-	#main .container > p:first-of-type::first-letter
+	#files .container
 	{
-		color: var(--col-bg);
+		--col-button-text: var(--col-bg);
+		--col-button-text-hover: var(--col-menu);
+		--col-button-bg: var(--col-text);
+		--col-button-bg-hover: var(--col-bg);
+		--pink-bg: hsl(70, 14%, 32%);
+		--pink-bg-transparent: hsla(70, 14%, 32%, 0.8);
 	}
 }
 

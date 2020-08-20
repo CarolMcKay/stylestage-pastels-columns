@@ -13,7 +13,7 @@
   --fs-h4: 1.25rem;
   --fs-text: 0.95rem;
   --fw-text: normal;
-  --col-accent: salmon;
+  --col-accent: DarkOrchid;
   --col-cta: Teal;
   --col-outline: var(--col-accent);
   --col-h1-fallback: #777;
@@ -23,15 +23,19 @@
   --col-after-bg: rgba(255, 255, 255, 0.4);
   --col-after-opacity: 0.7;
   --col-menu: white;
+  --col-menu-hover: --col-bg;
   --col-selection: var(--col-bg);
   --col-selectionbg: var(--col-text);
   --col-placeholder: #555;
-  --col-button-bg: var(--col-accent);
-  --col-button-text: var(--col-text);
+  --col-button-bg: var(--col-cta);
+  --col-button-text: var(--col-menu);
   --col-button-text-hover: var(--col-menu);
-  --col-button-bg-hover: var(--col-cta);
+  --col-button-bg-hover: var(--col-text);
   --rule-colour: rgba(0, 0, 0, 0.2);
   --rule: 1px dashed var(--rule-colour);
+  --h1-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900);
+  --files-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+  --bunny: url(https://source.unsplash.com/u_kMWN-BWyU/160x220);
   --padding-page-side: 2em;
   --padding: 3em;
   --column-width: 33rem;
@@ -45,21 +49,33 @@
   :root {
     --col-text: wheat;
     --col-bg: #333;
+    --col-cta: DarkOrchid;
+    --col-accent: salmon;
     --col-after-bg: transparent;
-    --col-button-text: var(--col-bg);
+    --col-menu-hover: var(--col-text);
+    --col-button-text: var(--col-menu);
+    --col-button-text-hover: var(--col-bg);
     --col-after-opacity: 1;
     --rule-colour: rgba(255, 255, 255, 0.2);
-    --outline-after: 1px dashed rgba(245, 222, 179, 0.2)
+    --outline-after: 1px dashed rgba(245, 222, 179, 0.2);
+    --h1-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
+    --files-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900)
   }
-  #main .container > p:first-of-type::first-letter {
-    color: var(--col-bg)
+  #files .container {
+    --col-button-text: var(--col-bg);
+    --col-button-text-hover: var(--col-menu);
+    --col-button-bg: var(--col-text);
+    --col-button-bg-hover: var(--col-bg);
+    --pink-bg: hsl(70, 14%, 32%);
+    --pink-bg-transparent: hsla(70, 14%, 32%, 0.8)
   }
 }
 /*! sass mixins */
 /*! browser resets */
 /*! experience */
 html {
-  scroll-behavior: smooth/*! when js isn't doing it */
+  scroll-behavior: smooth;
+  /*! when js isn't doing it */scrollbar-color: var(--col-accent) var(--col-cta)
 }
 @media (prefers-reduced-motion:reduce) {
   html {
@@ -67,6 +83,7 @@ html {
   }
 }
 /*! layout including margins */
+/*! https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap */
 body {
   width: 100%;
   min-height: 100vh;
@@ -77,7 +94,7 @@ body {
   /*! smoother scrolling for iphone */display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /*! https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap */overflow-wrap: anywhere;
+  overflow-wrap: anywhere;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -207,9 +224,7 @@ details summary {
 }
 /*! see constants */
 body {
-  font-family: var(--ff-serif);
-  align-items: center;
-  padding: 1em var(--padding-page-side) 0/*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: *//*! the entire scrollbar *//*! the track (progress bar) of the scrollbar *//*! the draggable scrolling handle *//*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
+  font-family: var(--ff-serif)
 }
 header p {
   max-width: none
@@ -220,14 +235,19 @@ h1 {
   font-size: var(--fs-h1);
   font-weight: 700;
   text-align: center;
-  background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900),linear-gradient(var(--col-h1-fallback),var(--col-h1-fallback));
+  background-image: var(--h1-bg),linear-gradient(var(--col-h1-fallback),var(--col-h1-fallback));
   -webkit-background-clip: text;
   background-clip: text;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left bottom;
-  margin: .25em 0;
+  margin: .75em 0;
   white-space: nowrap/*!for mobile layout*/
+}
+@media screen and (max-width:600px) {
+  h1 {
+    margin: 1em 0 .75em
+  }
 }
 h2 {
   -webkit-hyphens: auto;
@@ -278,6 +298,7 @@ header .container p {
   margin-block-end: 1rem
 }
 #main .container > p:first-of-type::first-letter {
+  color: var(--col-bg);
   background-color: var(--col-accent);
   padding: .2em .1em;
   margin-right: .1em;
@@ -360,22 +381,45 @@ nav ul a[href^="#"]::before {
 nav ul a:active,
 nav ul a:focus,
 nav ul a:hover {
-  color: var(--col-bg);
+  color: var(--col-menu-hover);
   text-decoration: underline;
   -webkit-text-decoration-color: var(--col-accent);
   text-decoration-color: var(--col-accent)
 }
-nav {
-  position: fixed;
-  z-index: 1;
-  height: 1px;
-  overflow: visible;
-  top: 0;
-  inset-block-start: 0;
-  right: 0;
-  inset-inline-end: 0
+@media screen and (max-width:899px) {
+  nav {
+    width: 100%;
+    margin: var(--padding) 0 0;
+    --mobile-menu-gap: 1.25em
+  }
+  nav::before {
+    display: none
+  }
+  nav ul {
+    /*! flex fallback */display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-right: calc(-1 * var(--mobile-menu-gap));
+    margin-bottom: 0;
+    /*! better layout with grid */display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(-webkit-max-content,6em));
+    grid-template-columns: repeat(auto-fit,minmax(max-content,6em))
+  }
+  nav ul li {
+    flex: 1 0 0;
+    margin-right: var(--mobile-menu-gap)
+  }
+  @supports (display:grid) {
+    nav ul {
+      column-gap: var(--mobile-menu-gap);
+      margin-right: 0
+    }
+    nav ul li {
+      margin-right: 0
+    }
+  }
 }
-@media screen and (max-width:1439px) {
+@media screen and (min-width:900px) and (max-width:1439px) {
   nav {
     transition: transform .3s ease-in;
     transform: translateX(82%)
@@ -390,7 +434,7 @@ nav {
   }
 }
 aside {
-  padding: var(--padding) 0
+  padding: var(--padding) 0 0
 }
 aside a {
   color: inherit
@@ -402,10 +446,14 @@ aside a {
   h1 {
     line-height: initial
   }
-  body {
-    overflow-x: hidden/*! to cater for nav position sticky */
-  }
   nav {
+    position: var(--position);
+    z-index: 1;
+    height: 1px;
+    overflow: visible;
+    inset-block-start: 0;
+    right: 0;
+    inset-inline-end: 0;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -414,7 +462,11 @@ aside a {
     inset-inline-start: 100%;
     margin-right: -2em
   }
+  body {
+    overflow-x: hidden/*! to cater for nav position sticky */
+  }
   aside {
+    padding: var(--padding) 0;
     background-color: var(--col-bg);
     border: var(--rule);
     transition: transform .3s ease-in;
@@ -425,8 +477,8 @@ aside a {
     block-size: 18rem
   }
   .profile {
-    bottom: 0;
-    inset-block-end: 0;
+    bottom: var(--column-gap);
+    inset-block-end: var(--column-gap);
     left: 0;
     inset-inline-start: 0;
     transform: translateX(-85%);
@@ -468,8 +520,8 @@ aside a {
     width: -webkit-max-content;
     width: max-content;
     padding: 1em 1em 1em var(--padding);
-    bottom: 0;
-    inset-block-end: 0;
+    bottom: var(--column-gap);
+    inset-block-end: var(--column-gap);
     left: 100%;
     inset-inline-start: 100%;
     transform: translateX(-2.25rem)
@@ -490,41 +542,6 @@ aside a {
     -webkit-writing-mode: vertical-lr;
     -ms-writing-mode: tb-lr;
     writing-mode: vertical-lr
-  }
-  #main {
-    padding: 0 2em/*! cater for sticky nav */
-  }
-  .page-footer .container,
-  section.container {
-    columns: var(--column-width) 2;
-    column-gap: var(--column-gap);
-    column-rule: var(--rule);
-    max-width: var(--columns-max-width)/*! for webkit browsers */
-  }
-  .page-footer .container h2,
-  section.container h2 {
-    column-span: all
-  }
-  /*! short content so don't break into next column */
-#contribute section.container {
-    columns: unset;
-    max-width: var(--column-width)
-  }
-  #contribute {
-    display: grid;
-    grid-template-columns: 1fr var(--column-gap) 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas: "contribute-intro . files" "contribute-steps . files"
-  }
-  #contribute section:nth-of-type(1) {
-    grid-area: contribute-intro
-  }
-  #contribute section:nth-of-type(2) {
-    grid-area: contribute-steps
-  }
-  #contribute footer {
-    grid-area: files;
-    display: grid/*! stretch content */
   }
 }
 /*! animations */
@@ -579,9 +596,13 @@ header h1 {
   width: max-content;
   margin: 3em auto
 }
+body {
+  align-items: center;
+  padding: 1em var(--padding-page-side) var(--padding-page-side)
+}
 @media screen and (max-width:900px) {
   body {
-    --padding-page-side: 3em/*! cater for fixed menu */
+    --padding-page-side: 2em
   }
 }
 .link-github {
@@ -629,10 +650,10 @@ https://emojipedia.org/bouquet/ */
   padding-left: 1em
 }
 #about section + section ul li {
-  margin: 2em 0
+  margin: 2em 0 2em 1em
 }
 #about section + section ul li::marker {
-  font-size: 2.5em
+  font-size: 2em
 }
 @supports not (list-style-type:style-counter) {
   #about section + section ul {
@@ -652,7 +673,8 @@ https://emojipedia.org/bouquet/ */
   padding: .5em;
   background-color: var(--col-after-bg);
   opacity: var(--col-after-opacity);
-  outline: var(--outline-after)
+  outline: var(--outline-after);
+  word-break: break-all
 }
 #about section + section ul li:nth-of-type(1)::after {
   content: "https://developer.mozilla.org/en-US/docs/Glossary/Flexbox"
@@ -706,20 +728,22 @@ https://emojipedia.org/bouquet/ */
   content: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide"
 }
 #files .container {
+  --pink-bg: hsl(323, 23%, 89%);
+  --pink-bg-transparent: hsla(323, 23%, 89%, 0.8);
   padding: var(--padding);
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: -webkit-max-content repeat(3,auto);
   grid-template-rows: max-content repeat(3,auto);
-  background-color: var(--col-cta);
-  background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
-  background-repeat: no-repeat;
-  background-size: cover
+  background-color: var(--pink-bg);
+  background-image: linear-gradient(var(--pink-bg-transparent),var(--pink-bg-transparent)),var(--files-bg);
+  background-repeat: no-repeat,no-repeat;
+  background-size: 90% 88%,cover;
+  background-position: 50% 2em,0 0
 }
 #files .container h3 {
   grid-column: 1/-1;
-  color: var(--col-menu);
-  text-shadow: 1px 1px .5em var(--col-text-shadow),-1px -1px .5em var(--col-text-shadow),-1px 1px .5em var(--col-text-shadow),1px -1px .5em var(--col-text-shadow)
+  color: var(--col-text)
 }
 #files .container a {
   align-self: start
@@ -764,18 +788,97 @@ https://emojipedia.org/bouquet/ */
 .page-footer ul li {
   margin-bottom: 0/*! because the a tags have padding */
 }
+.page-footer {
+  margin-bottom: var(--padding)
+}
+.page-footer .container::before {
+  content: var(--bunny);
+  display: inline-block;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%)
+}
+@media screen and (max-width:499px) {
+  .page-footer .container {
+    display: grid/*! to center bunny */
+  }
+  .page-footer .container::before {
+    margin: 0 auto 1em/*! margin auto to center bunny */
+  }
+}
+@media screen and (min-width:500px) {
+  .page-footer .container::before {
+    float: right;
+    margin: .25em;
+    -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%);
+    -webkit-shape-margin: 1em;
+    shape-margin: 1em;
+    transform: translateX(-25%)
+  }
+}
+#sponsor-footer {
+  margin-top: auto
+}
+#main .container > p {
+  /*! so that first letter float doesn't fall outside of the paragraph block */display: flow-root
+}
+@media screen and (min-width:900px) {
+  body {
+    padding-bottom: var(--column-gap)
+  }
+  #main {
+    padding: 0 2em/*! cater for sticky nav */
+  }
+  .page-footer .container,
+  section.container {
+    columns: var(--column-width) 2;
+    column-gap: var(--column-gap);
+    column-rule: var(--rule);
+    max-width: var(--columns-max-width)/*! for webkit browsers */
+  }
+  .page-footer .container h2,
+  section.container h2 {
+    column-span: all
+  }
+  /*! short content so don't break into next column */
+#contribute section.container {
+    columns: unset;
+    max-width: var(--column-width)
+  }
+  #contribute {
+    display: grid;
+    grid-template-columns: 1fr var(--column-gap) 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: "contribute-intro . files" "contribute-steps . files"
+  }
+  #contribute section:nth-of-type(1) {
+    grid-area: contribute-intro
+  }
+  #contribute section:nth-of-type(2) {
+    grid-area: contribute-steps
+  }
+  #contribute footer {
+    grid-area: files;
+    display: grid/*! stretch content */
+  }
+}
 /*! scrollbar style */
-body::-webkit-scrollbar {
+/*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: */
+/*! the entire scrollbar */
+::-webkit-scrollbar {
   width: 14px;
   height: 14px
 }
-body::-webkit-scrollbar-track {
+/*! the track (progress bar) of the scrollbar */
+::-webkit-scrollbar-track {
   background-color: var(--col-cta)
 }
-body::-webkit-scrollbar-thumb {
+/*! the draggable scrolling handle */
+::-webkit-scrollbar-thumb {
   background-color: var(--col-accent)
 }
-body::-webkit-scrollbar-button {
+/*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
+::-webkit-scrollbar-button {
   color: var(--col-cta);
   background-color: var(--col-accent);
   height: .5rem
@@ -784,7 +887,9 @@ body::-webkit-scrollbar-button {
 	- https://developer.mozilla.org/en-US/
 	- https://en.wikipedia.org/wiki/Web_colors
 	- https://fonts.google.com/ including a variable font
-	- https://unsplash.com/photos/KOtu2rPqWs4 Thanks to Annie Spratt for sharing their work on Unsplash.
+	- https://unsplash.com/photos/
+	- - Thanks to Annie Spratt for sharing their work on Unsplash.
+	- - Thanks to Satyabrata sm for sharing their work on Unsplash.
 	- https://bennettfeely.com/clippy/
 	- https://fontawesome.com/
 	- https://emojipedia.org/

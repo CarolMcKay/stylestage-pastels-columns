@@ -6,14 +6,14 @@
 body
 {
 	align-items: center;
-	padding: 1em var(--padding-page-side) 0;
+	padding: 1em var(--padding-page-side) var(--padding-page-side);
 }
 
 @media screen and (max-width: $breakpoint)
 {
 	body
 	{
-		--padding-page-side: 3em; /*! cater for fixed menu */
+		--padding-page-side: 2em;
 	}
 }
 
@@ -87,11 +87,11 @@ https://emojipedia.org/bouquet/ */
 
 		li
 		{
-			margin: 2em 0;
+			margin: 2em 0 2em 1em;
 
 			&::marker
 			{
-				font-size: 2.5em;
+				font-size: 2em;
 			}
 
 			@supports not (list-style-type: style-counter)
@@ -114,6 +114,7 @@ https://emojipedia.org/bouquet/ */
 				background-color: var(--col-after-bg);
 				opacity: var(--col-after-opacity);
 				outline: var(--outline-after);
+				word-break: break-all;
 			}
 
 			&:nth-of-type(1)
@@ -242,25 +243,25 @@ https://emojipedia.org/bouquet/ */
 
 #files .container /*! footer */
 {
+	--pink-bg: hsl(323, 23%, 89%);
+	--pink-bg-transparent: hsla(323, 23%, 89%, 0.8);
+
 	padding: var(--padding);
 	display: grid;
 	grid-template-columns: repeat(4,1fr);
 	grid-template-rows: max-content repeat(3, auto);
-	background-color: var(--col-cta);
-	background-image: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
-	background-repeat: no-repeat;
-	background-size: cover;
+	background-color: var(--pink-bg);
+	background-image:
+		linear-gradient(var(--pink-bg-transparent), var(--pink-bg-transparent)),
+		var(--files-bg);
+	background-repeat: no-repeat, no-repeat;
+	background-size: 90% 88%,cover;
+	background-position: 50% 2em,0 0;
 
 	h3
 	{
 		grid-column: 1 / -1;
-		color: var(--col-menu);
-		text-shadow:
-			1px 1px 0.5em var(--col-text-shadow),
-			-1px -1px 0.5em var(--col-text-shadow),
-			-1px 1px 0.5em var(--col-text-shadow),
-			1px -1px 0.5em var(--col-text-shadow)
-		;
+		color: var(--col-text);
 	}
 
 	a
@@ -330,9 +331,44 @@ https://emojipedia.org/bouquet/ */
 .page-footer
 {
 	margin-bottom: var(--padding);
+
+	.container
+	{
+		@media screen and (max-width: 499px)
+		{
+			display: grid; /*! to center bunny */
+		}
+
+		&::before
+		{
+			content: var(--bunny);
+			display: inline-block;
+			clip-path: circle(50% at 50% 50%);
+
+			@media screen and (max-width: 499px)
+			{
+				margin: 0 auto 1em; /*! margin auto to center bunny */
+			}
+
+			@media screen and (min-width: 500px)
+			{
+				float: right;
+				margin: 0.25em;
+				shape-outside: circle(50%);
+				shape-margin: 1em;
+				transform: translateX(-25%);
+			}
+		}
+	}
 }
 
 #sponsor-footer
 {
 	margin-top: auto;
+}
+
+#main .container > p
+{
+	/*! so that first letter float doesn't fall outside of the paragraph block */
+	display: flow-root;
 }

@@ -2,33 +2,35 @@
 
 @use "_constants" as *;
 
-body
+html
 {
-    /*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: */
+    scrollbar-color: var(--col-accent) var(--col-cta);
+}
 
-    /*! the entire scrollbar */
-    &::-webkit-scrollbar
-    {
-        width: 14px;
-        height: 14px;
-    }
+/*! You can use the following pseudo elements to customize various parts of the scrollbar for webkit browsers: */
 
-    /*! the track (progress bar) of the scrollbar */
-    &::-webkit-scrollbar-track
-    {
-        background-color: var(--col-cta);
-    }
+/*! the entire scrollbar */
+::-webkit-scrollbar
+{
+    width: 14px;
+    height: 14px;
+}
 
-    /*! the draggable scrolling handle */
-    &::-webkit-scrollbar-thumb
-    {
-        background-color: var(--col-accent);
-    }
+/*! the track (progress bar) of the scrollbar */
+::-webkit-scrollbar-track
+{
+    background-color: var(--col-cta);
+}
 
-    /*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
-    &::-webkit-scrollbar-button {
-        color: var(--col-cta);
-        background-color: var(--col-accent);
-        height: 0.5rem;
-    }
+/*! the draggable scrolling handle */
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--col-accent);
+}
+
+/*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
+::-webkit-scrollbar-button {
+    color: var(--col-cta);
+    background-color: var(--col-accent);
+    height: 0.5rem;
 }

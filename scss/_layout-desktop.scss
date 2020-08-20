@@ -5,6 +5,11 @@
 
 @media screen and (min-width: $breakpoint)
 {
+	body
+	{
+		padding-bottom: var(--column-gap);
+	}
+
 	#main
 	{
 		padding: 0 2em; /*! cater for sticky nav */

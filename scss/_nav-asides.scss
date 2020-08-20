@@ -108,7 +108,7 @@ nav
 			&:active,
 			&:focus
 			{
-				color: var(--col-bg);
+				color: var(--col-menu-hover);
 				text-decoration: underline;
 				text-decoration-color: var(--col-accent);
 			}
@@ -116,16 +116,66 @@ nav
 	}
 }
 
-nav
+@media screen and (max-width : 899px)
 {
-	position: fixed;
-	z-index: 1;
-	height: 1px;
-	overflow: visible;
-	top: 0;
-	inset-block-start: 0;
-	right: 0;
-	inset-inline-end: 0;
+	nav
+	{
+		width: 100%;
+		margin: var(--padding) 0 0;
+
+		&::before
+		{
+			display: none;
+		}
+
+		--mobile-menu-gap: 1.25em;
+
+		ul
+		{
+			/*! flex fallback */
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			margin-right: calc(-1 * var(--mobile-menu-gap));
+			margin-bottom: 0;
+
+			li
+			{
+				flex:1 0 0;
+				margin-right: var(--mobile-menu-gap);
+			}
+
+			/*! better layout with grid */
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(max-content, 6em));
+
+			@supports(display: grid)
+			{
+				column-gap: var(--mobile-menu-gap);
+				margin-right: 0;
+
+				li
+				{
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width : 900px)
+{
+	nav
+	{
+		position: var(--position);
+		z-index: 1;
+		height: 1px;
+		overflow: visible;
+		top: 0;
+		inset-block-start: 0;
+		right: 0;
+		inset-inline-end: 0;
+	}
 }
 
 @media screen and (min-width: $breakpoint)
@@ -146,7 +196,7 @@ nav
 	}
 }
 
-@media screen and (max-width: 1439px)
+@media screen and (min-width : 900px) and (max-width: 1439px)
 {
 	nav
 	{
@@ -169,7 +219,12 @@ nav
 
 aside
 {
-	padding: var(--padding) 0;
+	padding: var(--padding) 0 0;
+
+	@media screen and (min-width: 900px)
+	{
+		padding: var(--padding) 0;
+	}
 
 	a
 	{
@@ -193,8 +248,8 @@ aside
 
 	.profile /*! aside */
 	{
-		bottom: 0;
-		inset-block-end: 0;
+		bottom: var(--column-gap);
+		inset-block-end: var(--column-gap);
 		left: 0;
 		inset-inline-start: 0;
 		transform: translateX(-85%);
@@ -244,8 +299,8 @@ aside
 	{
 		width: max-content;
 		padding: 1em 1em 1em var(--padding);
-		bottom: 0;
-		inset-block-end: 0;
+		bottom: var(--column-gap);
+		inset-block-end: var(--column-gap);
 		left: 100%;
 		inset-inline-start: 100%;
 		transform: translateX(-2.25rem);
