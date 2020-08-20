@@ -16,6 +16,7 @@ html
 }
 
 /*! layout including margins */
+/*! https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap */
 
 body
 {
@@ -28,7 +29,6 @@ body
     display: flex;
     flex-direction: column;
 	justify-content: flex-start;
-	/*! https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap */
 	overflow-wrap: anywhere;
 }
 

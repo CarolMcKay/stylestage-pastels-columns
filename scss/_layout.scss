@@ -326,3 +326,13 @@ https://emojipedia.org/bouquet/ */
 		margin-bottom: 0; /*! because the a tags have padding */
 	}
 }
+
+.page-footer
+{
+	margin-bottom: var(--padding);
+}
+
+#sponsor-footer
+{
+	margin-top: auto;
+}
