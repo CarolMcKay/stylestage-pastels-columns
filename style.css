@@ -50,6 +50,9 @@
   --col-sb-thumb: var(--col-accent);
   --col-sb-track: var(--col-cta)
 }
+nav {
+  --col-outline: var(--col-menu)
+}
 @media (prefers-color-scheme:dark) {
   /*! https://contrast-ratio.com/#wheat-on-%23333 - text
   	https://contrast-ratio.com/#salmon-on-%23333 - buttons

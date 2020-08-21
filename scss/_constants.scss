@@ -53,6 +53,11 @@ $breakpoint: 900px;
 	--columns-max-width: calc((var(--column-width) * 2) + var(--column-gap)); /*! for webkit browsers */
 }
 
+nav
+{
+	--col-outline: var(--col-menu);
+}
+
 @media (prefers-color-scheme: dark)
 {
 	/*! https://contrast-ratio.com/#wheat-on-%23333 - text
