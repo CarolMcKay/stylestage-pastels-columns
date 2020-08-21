@@ -8,8 +8,9 @@ $breakpoint: 900px;
 
 :root
 {
-	--ff-cursive: 'Rowdies', cursive;
-	--ff-serif: 'Libre Caslon Text', serif;
+	--ff-cursive: 'Rowdies', cursive; /*! site title text */
+	--ff-serif: 'Libre Caslon Text', serif; /*! body text */
+	--ff-ss: 'Open Sans', sans-serif; /*! mobile body text */
 	--fs-h1: calc(2rem + 6vw);
 	--fs-h2: 1.75rem;
 	--fs-h3: 1.5rem;
@@ -87,18 +88,23 @@ $breakpoint: 900px;
 	}
 }
 
-@media screen and (max-width: $breakpoint)
-{
-	:root
-	{
-		--h1-bg-size: auto;
-	}
-}
-
-@media screen and (min-width: $breakpoint) and (prefers-color-scheme: dark)
+@media screen and (min-width: $breakpoint)
 {
 	:root
 	{
 		--position: fixed;
+	}
+}
+
+@media only screen and (max-width : 83.5em) /*! 1336px ipad pro landscape */
+{
+	/*! larger font size to cater for mobile retina screens */
+	:root
+	{
+		--fs-h1: calc(2rem + 8vmax);
+		--fs-h2: calc(1.75rem - 0.25rem);
+		--fs-h3: calc(1.5rem - 0.25rem);
+		--fs-h4: calc(1.25rem - 0.25rem);
+		--fs-text: calc(0.95rem * 1.3);
 	}
 }

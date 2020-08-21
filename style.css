@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*! fonts */
-@import url(https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Rowdies:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Rowdies:wght@700&Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 /*! constants */
 /*! https://contrast-ratio.com/#%23333-on-wheat - text
@@ -8,8 +8,9 @@
 */
 :root {
   --ff-cursive: "Rowdies",cursive;
-  --ff-serif: "Libre Caslon Text",serif;
-  --fs-h1: calc(2rem + 6vw);
+  /*! site title text */--ff-serif: "Libre Caslon Text",serif;
+  /*! body text */--ff-ss: "Open Sans",sans-serif;
+  /*! mobile body text */--fs-h1: calc(2rem + 6vw);
   --fs-h2: 1.75rem;
   --fs-h3: 1.5rem;
   --fs-h4: 1.25rem;
@@ -75,11 +76,6 @@
     --col-button-bg-hover: var(--col-bg);
     --pink-bg: hsl(70, 14%, 32%);
     --pink-bg-transparent: hsla(70, 14%, 32%, 0.8)
-  }
-}
-@media screen and (min-width:900px) and (prefers-color-scheme:dark) {
-  :root {
-    --position: fixed
   }
 }
 /*! sass mixins */
@@ -238,6 +234,19 @@ details summary {
 body {
   font-family: var(--ff-serif)
 }
+@media only screen and (max-width:83.5em) {
+  /*! larger font size to cater for mobile retina screens */
+:root {
+    --fs-h1: calc(2rem + 8vmax);
+    --fs-h2: calc(1.75rem - 0.25rem);
+    --fs-h3: calc(1.5rem - 0.25rem);
+    --fs-h4: calc(1.25rem - 0.25rem);
+    --fs-text: calc(0.95rem * 1.3)
+  }
+  body {
+    font-family: var(--ff-ss)
+  }
+}
 header p {
   max-width: none
 }
@@ -247,10 +256,10 @@ h1 {
   font-weight: 700;
   text-align: center;
   background-image: var(--h1-bg),linear-gradient(var(--col-h1-fallback),var(--col-h1-fallback));
+  background-size: var(--h1-bg-size,auto);
   -webkit-background-clip: text;
   background-clip: text;
   background-repeat: no-repeat;
-  background-size: var(--h1-bg-size,cover);
   background-position: left bottom;
   margin: .75em 0
 }
@@ -450,8 +459,12 @@ aside a {
   color: inherit
 }
 @media screen and (min-width:900px) {
+  :root {
+    --position: fixed
+  }
   h1 {
-    line-height: initial
+    line-height: initial;
+    --h1-bg-size: cover
   }
   nav {
     position: var(--position);
@@ -609,9 +622,6 @@ body {
   padding: 1em var(--padding-page-side) var(--padding-page-side)
 }
 @media screen and (max-width:900px) {
-  :root {
-    --h1-bg-size: auto
-  }
   body {
     --padding-page-side: 2em
   }
