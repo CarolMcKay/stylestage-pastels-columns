@@ -38,7 +38,6 @@
   --rule: 1px dashed var(--rule-colour);
   --h1-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900);
   --files-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
-  --bunny: url(https://source.unsplash.com/u_kMWN-BWyU/160x220);
   --padding-page-side: 2em;
   --padding: 3em;
   --column-width: 33rem;
@@ -393,6 +392,9 @@ nav ul li:first-child::after {
 }
 nav ul li:last-child::after {
   bottom: .25em
+}
+nav ul a {
+  display: block/*! make full width of container */
 }
 nav ul a[href^="#"] {
   position: relative;
@@ -871,10 +873,15 @@ https://emojipedia.org/bouquet/ */
   margin-bottom: var(--padding)
 }
 .page-footer .container::before {
-  content: var(--bunny);
+  content: url(https://source.unsplash.com/u_kMWN-BWyU/160x220);
+  content: url(https://source.unsplash.com/u_kMWN-BWyU/160x220)/"Photo of a white rabbit for cuteness value";
+  alt: "Photo of a white rabbit for cuteness value";
   display: inline-block;
   -webkit-clip-path: circle(50% at 50% 50%);
-  clip-path: circle(50% at 50% 50%)
+  clip-path: circle(50% at 50% 50%);
+  /*! hide the alt text in webkit - why is it displaying anyway?! */width: 160px;
+  height: 220px;
+  overflow: hidden
 }
 @media screen and (max-width:499px) {
   .page-footer .container {

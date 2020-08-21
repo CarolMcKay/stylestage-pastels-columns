@@ -89,6 +89,8 @@ nav
 
 		a
 		{
+			display: block; /*! make full width of container */
+
 			&[href^="#"]
 			{
 				position: relative;
