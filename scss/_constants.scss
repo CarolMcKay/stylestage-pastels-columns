@@ -2,12 +2,15 @@
 
 $breakpoint: 900px;
 
+/*! https://contrast-ratio.com/#%23333-on-wheat - text
+	https://contrast-ratio.com/#teal-on-wheat - buttons
+*/
+
 :root
 {
 	--ff-cursive: 'Rowdies', cursive;
 	--ff-serif: 'Libre Caslon Text', serif;
-	--fs-h1-fallback: calc(2rem + 6vw);
-	--fs-h1: min(calc(2rem + 6vw), 11rem);
+	--fs-h1: calc(2rem + 6vw);
 	--fs-h2: 1.75rem;
 	--fs-h3: 1.5rem;
 	--fs-h4: 1.25rem;
@@ -29,9 +32,9 @@ $breakpoint: 900px;
 	--col-selectionbg: var(--col-text);
 	--col-placeholder: #555;
 
-	--col-button-bg: var(--col-cta);
 	--col-button-text: var(--col-menu);
 	--col-button-text-hover: var(--col-menu);
+	--col-button-bg: var(--col-cta);
 	--col-button-bg-hover: var(--col-text);
 
 	--rule-colour: rgba(0, 0, 0, 0.2);
@@ -51,6 +54,9 @@ $breakpoint: 900px;
 
 @media (prefers-color-scheme: dark)
 {
+	/*! https://contrast-ratio.com/#wheat-on-%23333 - text
+		https://contrast-ratio.com/#salmon-on-%23333 - buttons
+	*/
 	:root
 	{
 		--col-text: wheat;
@@ -60,8 +66,9 @@ $breakpoint: 900px;
 		--col-accent: salmon;
 		--col-after-bg: transparent;
 		--col-menu-hover: var(--col-text);
-		--col-button-text: var(--col-menu);
+		--col-button-text: var(--col-bg);
 		--col-button-text-hover: var(--col-bg);
+		--col-button-bg: var(--col-accent);
 		--col-after-opacity: 1;
 		--rule-colour: rgba(255, 255, 255, 0.2);
 		--outline-after: 1px dashed rgba(245, 222, 179, 0.2);
@@ -80,7 +87,15 @@ $breakpoint: 900px;
 	}
 }
 
-@media screen and (min-width: $breakpoint)
+@media screen and (max-width: $breakpoint)
+{
+	:root
+	{
+		--h1-bg-size: auto;
+	}
+}
+
+@media screen and (min-width: $breakpoint) and (prefers-color-scheme: dark)
 {
 	:root
 	{

@@ -3,11 +3,13 @@
 @import url(https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Rowdies:wght@700&display=swap);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 /*! constants */
+/*! https://contrast-ratio.com/#%23333-on-wheat - text
+	https://contrast-ratio.com/#teal-on-wheat - buttons
+*/
 :root {
   --ff-cursive: "Rowdies",cursive;
   --ff-serif: "Libre Caslon Text",serif;
-  --fs-h1-fallback: calc(2rem + 6vw);
-  --fs-h1: min(calc(2rem + 6vw), 11rem);
+  --fs-h1: calc(2rem + 6vw);
   --fs-h2: 1.75rem;
   --fs-h3: 1.5rem;
   --fs-h4: 1.25rem;
@@ -27,9 +29,9 @@
   --col-selection: var(--col-bg);
   --col-selectionbg: var(--col-text);
   --col-placeholder: #555;
-  --col-button-bg: var(--col-cta);
   --col-button-text: var(--col-menu);
   --col-button-text-hover: var(--col-menu);
+  --col-button-bg: var(--col-cta);
   --col-button-bg-hover: var(--col-text);
   --rule-colour: rgba(0, 0, 0, 0.2);
   --rule: 1px dashed var(--rule-colour);
@@ -46,7 +48,10 @@
   background: var(--col-bg)
 }
 @media (prefers-color-scheme:dark) {
-  :root {
+  /*! https://contrast-ratio.com/#wheat-on-%23333 - text
+  	https://contrast-ratio.com/#salmon-on-%23333 - buttons
+  */
+:root {
     --col-text: wheat;
     --col-h1-fallback: var(--col-text);
     --col-bg: #333;
@@ -54,8 +59,9 @@
     --col-accent: salmon;
     --col-after-bg: transparent;
     --col-menu-hover: var(--col-text);
-    --col-button-text: var(--col-menu);
+    --col-button-text: var(--col-bg);
     --col-button-text-hover: var(--col-bg);
+    --col-button-bg: var(--col-accent);
     --col-after-opacity: 1;
     --rule-colour: rgba(255, 255, 255, 0.2);
     --outline-after: 1px dashed rgba(245, 222, 179, 0.2);
@@ -69,6 +75,11 @@
     --col-button-bg-hover: var(--col-bg);
     --pink-bg: hsl(70, 14%, 32%);
     --pink-bg-transparent: hsla(70, 14%, 32%, 0.8)
+  }
+}
+@media screen and (min-width:900px) and (prefers-color-scheme:dark) {
+  :root {
+    --position: fixed
   }
 }
 /*! sass mixins */
@@ -232,7 +243,6 @@ header p {
 }
 h1 {
   font-family: var(--ff-cursive);
-  font-size: var(--fs-h1-fallback);
   font-size: var(--fs-h1);
   font-weight: 700;
   text-align: center;
@@ -240,10 +250,9 @@ h1 {
   -webkit-background-clip: text;
   background-clip: text;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: var(--h1-bg-size,cover);
   background-position: left bottom;
-  margin: .75em 0;
-  white-space: nowrap/*!for mobile layout*/
+  margin: .75em 0
 }
 @media screen and (max-width:600px) {
   h1 {
@@ -441,9 +450,6 @@ aside a {
   color: inherit
 }
 @media screen and (min-width:900px) {
-  :root {
-    --position: fixed
-  }
   h1 {
     line-height: initial
   }
@@ -597,13 +603,38 @@ header h1 {
   width: max-content;
   margin: 3em auto
 }
+/*! layout */
 body {
   align-items: center;
   padding: 1em var(--padding-page-side) var(--padding-page-side)
 }
 @media screen and (max-width:900px) {
+  :root {
+    --h1-bg-size: auto
+  }
   body {
     --padding-page-side: 2em
+  }
+  header h1 {
+    position: relative;
+    max-width: 8ch;
+    margin-left: auto;
+    -webkit-margin-start: auto;
+    margin-inline-start: auto;
+    margin-right: auto;
+    -webkit-margin-end: auto;
+    margin-inline-end: auto
+  }
+  header h1::before {
+    content: " ";
+    position: absolute;
+    width: 2ch;
+    height: .18em;
+    top: 52%;
+    left: 51%;
+    transform: translateX(-50%);
+    background-image: var(--h1-bg),linear-gradient(var(--col-h1-fallback),var(--col-h1-fallback));
+    background-position: left bottom
   }
 }
 .link-github {
@@ -823,6 +854,7 @@ https://emojipedia.org/bouquet/ */
 #main .container > p {
   /*! so that first letter float doesn't fall outside of the paragraph block */display: flow-root
 }
+/*! desktop layout */
 @media screen and (min-width:900px) {
   body {
     padding-bottom: var(--column-gap)
@@ -887,6 +919,7 @@ https://emojipedia.org/bouquet/ */
 /*!	Resources:
 	- https://developer.mozilla.org/en-US/
 	- https://en.wikipedia.org/wiki/Web_colors
+	- https://contrast-ratio.com
 	- https://fonts.google.com/ including a variable font
 	- https://unsplash.com/photos/
 	- - Thanks to Annie Spratt for sharing their work on Unsplash.
