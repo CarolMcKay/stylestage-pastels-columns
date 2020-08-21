@@ -367,9 +367,9 @@ https://emojipedia.org/bouquet/ */
 
 		&::before
 		{
-			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220");
-			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220") / "Photo of a white rabbit for cuteness value";
-			alt: "Photo of a white rabbit for cuteness value";
+			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220"); /*! firefox */
+			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220") / "Photo of a white rabbit for cuteness value"; /*! webkit */
+			alt: "Photo of a white rabbit for cuteness value"; /*! safari */
 			display: inline-block;
 			clip-path: circle(50% at 50% 50%);
 			 /*! hide the alt text in webkit - why is it displaying anyway?! */
