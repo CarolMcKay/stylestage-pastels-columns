@@ -46,7 +46,9 @@
   --columns-max-width: calc((var(--column-width) * 2) + var(--column-gap));
   /*! for webkit browsers */font-size: 16px;
   color: var(--col-text);
-  background: var(--col-bg)
+  background: var(--col-bg);
+  --col-sb-thumb: var(--col-accent);
+  --col-sb-track: var(--col-cta)
 }
 @media (prefers-color-scheme:dark) {
   /*! https://contrast-ratio.com/#wheat-on-%23333 - text
@@ -83,7 +85,7 @@
 /*! experience */
 html {
   scroll-behavior: smooth;
-  /*! when js isn't doing it */scrollbar-color: var(--col-accent) var(--col-cta)
+  /*! when js isn't doing it */scrollbar-color: var(--col-sb-thumb) var(--col-sb-track)
 }
 @media (prefers-reduced-motion:reduce) {
   html {
@@ -237,13 +239,16 @@ body {
 @media only screen and (max-width:83.5em) {
   /*! larger font size to cater for mobile retina screens */
 :root {
-    --fs-h1: calc(2rem + 8vmax);
-    --fs-h2: calc(1.75rem - 0.25rem);
-    --fs-h3: calc(1.5rem - 0.25rem);
-    --fs-h4: calc(1.25rem - 0.25rem);
+    --fs-h1: calc(2rem + 8vmax)
+  }
+  .container,
+  nav {
     --fs-text: calc(0.95rem * 1.3)
   }
-  body {
+  .container li,
+  .container p,
+  nav li,
+  nav p {
     font-family: var(--ff-ss)
   }
 }
@@ -421,8 +426,8 @@ nav ul a:hover {
     margin-right: calc(-1 * var(--mobile-menu-gap));
     margin-bottom: 0;
     /*! better layout with grid */display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(-webkit-max-content,6em));
-    grid-template-columns: repeat(auto-fit,minmax(max-content,6em))
+    grid-template-columns: repeat(auto-fit,minmax(-webkit-max-content,10em));
+    grid-template-columns: repeat(auto-fit,minmax(max-content,10em))
   }
   nav ul li {
     flex: 1 0 0;
@@ -436,20 +441,6 @@ nav ul a:hover {
     nav ul li {
       margin-right: 0
     }
-  }
-}
-@media screen and (min-width:900px) and (max-width:1439px) {
-  nav {
-    transition: transform .3s ease-in;
-    transform: translateX(82%)
-  }
-  nav:active,
-  nav:focus,
-  nav:hover {
-    transform: translateX(0)
-  }
-  nav:focus-within {
-    transform: translateX(0)
   }
 }
 aside {
@@ -501,18 +492,7 @@ aside a {
     inset-block-end: var(--column-gap);
     left: 0;
     inset-inline-start: 0;
-    transform: translateX(-85%);
     padding: 1em var(--padding) 1em 1em
-  }
-  .profile:active,
-  .profile:focus,
-  .profile:hover {
-    transform: translateX(0);
-    z-index: 2
-  }
-  .profile:focus-within {
-    transform: translateX(0);
-    z-index: 2
   }
   #profile-title,
   #styles h2 {
@@ -562,6 +542,60 @@ aside a {
     -webkit-writing-mode: vertical-lr;
     -ms-writing-mode: tb-lr;
     writing-mode: vertical-lr
+  }
+}
+@media only screen and (min-width:900px) and (max-width:83.5em) {
+  nav {
+    transform: translateX(85%);
+    transition: transform .3s ease-in
+  }
+  nav:active,
+  nav:focus,
+  nav:hover {
+    transform: translateX(0)
+  }
+  nav:focus-within {
+    transform: translateX(0)
+  }
+  .profile {
+    transform: translateX(-88%)
+  }
+  .profile:active,
+  .profile:focus,
+  .profile:hover {
+    transform: translateX(0);
+    z-index: 2
+  }
+  .profile:focus-within {
+    transform: translateX(0);
+    z-index: 2
+  }
+}
+@media only screen and (min-width:83.51em) {
+  nav {
+    transform: translateX(82%);
+    transition: transform .3s ease-in
+  }
+  nav:active,
+  nav:focus,
+  nav:hover {
+    transform: translateX(0)
+  }
+  nav:focus-within {
+    transform: translateX(0)
+  }
+  .profile {
+    transform: translateX(-85%)
+  }
+  .profile:active,
+  .profile:focus,
+  .profile:hover {
+    transform: translateX(0);
+    z-index: 2
+  }
+  .profile:focus-within {
+    transform: translateX(0);
+    z-index: 2
   }
 }
 /*! animations */
@@ -914,16 +948,16 @@ https://emojipedia.org/bouquet/ */
 }
 /*! the track (progress bar) of the scrollbar */
 ::-webkit-scrollbar-track {
-  background-color: var(--col-cta)
+  background-color: var(--col-sb-track)
 }
 /*! the draggable scrolling handle */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--col-accent)
+  background-color: var(--col-sb-thumb)
 }
 /*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
 ::-webkit-scrollbar-button {
-  color: var(--col-cta);
-  background-color: var(--col-accent);
+  color: var(--col-sb-track);
+  background-color: var(--col-sb-thumb);
   height: .5rem
 }
 /*!	Resources:

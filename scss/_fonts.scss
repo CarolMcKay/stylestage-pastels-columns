@@ -14,9 +14,14 @@ body
 
 @media only screen and (max-width : 83.5em) /*! 1336px ipad pro landscape */
 {
-	body
+	.container, nav
 	{
-		font-family: var(--ff-ss);
+		--fs-text: calc(0.95rem * 1.3);
+
+		p, li
+		{
+			font-family: var(--ff-ss);
+		}
 	}
 }
 

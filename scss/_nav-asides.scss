@@ -147,7 +147,7 @@ nav
 
 			/*! better layout with grid */
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(max-content, 6em));
+			grid-template-columns: repeat(auto-fit, minmax(max-content, 10em));
 
 			@supports(display: grid)
 			{
@@ -196,27 +196,6 @@ nav
 	}
 }
 
-@media screen and (min-width : 900px) and (max-width: 1439px)
-{
-	nav
-	{
-		transition: transform 300ms ease-in;
-		transform: translateX(82%);
-
-		&:hover,
-		&:active,
-		&:focus
-		{
-			transform: translateX(0);
-		}
-
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
-		{
-			transform: translateX(0);
-		}
-	}
-}
-
 aside
 {
 	padding: var(--padding) 0 0;
@@ -252,22 +231,7 @@ aside
 		inset-block-end: var(--column-gap);
 		left: 0;
 		inset-inline-start: 0;
-		transform: translateX(-85%);
 		padding: 1em var(--padding) 1em 1em;
-
-		&:hover,
-		&:active,
-		&:focus
-		{
-			transform: translateX(0);
-			z-index: 2;
-		}
-
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
-		{
-			transform: translateX(0);
-			z-index: 2;
-		}
 	}
 
 	#profile-title,
@@ -326,4 +290,85 @@ aside
 			writing-mode: vertical-lr;
 		}
 	}
+}
+
+@media only screen and (min-width : 900px) and (max-width : 83.5em) /*! 1336px ipad pro landscape */
+{
+	nav
+	{
+		transform: translateX(85%);
+		transition: transform 300ms ease-in;
+
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(0);
+		}
+
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		{
+			transform: translateX(0);
+		}
+	}
+
+	.profile
+	{
+		transform: translateX(-88%);
+
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(0);
+			z-index: 2;
+		}
+
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		{
+			transform: translateX(0);
+			z-index: 2;
+		}
+	}
+}
+
+@media only screen and (min-width : 83.51em) /*! 1336px ipad pro landscape */
+{
+	nav
+	{
+		transform: translateX(82%);
+		transition: transform 300ms ease-in;
+
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(0);
+		}
+
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		{
+			transform: translateX(0);
+		}
+	}
+
+	.profile
+	{
+		transform: translateX(-85%);
+
+		&:hover,
+		&:active,
+		&:focus
+		{
+			transform: translateX(0);
+			z-index: 2;
+		}
+
+		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		{
+			transform: translateX(0);
+			z-index: 2;
+		}
+	}
+
 }
