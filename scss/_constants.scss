@@ -1,6 +1,8 @@
 /*! constants */
-
-$breakpoint: 900px;
+$screen-size-100: 600px;
+$screen-size-200: 601px;
+$screen-size-300: 900px;
+$screen-size-400: 901px;
 
 /*! https://contrast-ratio.com/#%23333-on-wheat - text
 	https://contrast-ratio.com/#teal-on-wheat - buttons
@@ -8,9 +10,12 @@ $breakpoint: 900px;
 
 :root
 {
-	--ff-cursive: 'Rowdies', cursive; /*! site title text */
-	--ff-serif: 'Libre Caslon Text', serif; /*! body text */
-	--ff-ss: 'Open Sans', sans-serif; /*! mobile body text */
+	/*! site title text */
+	--ff-cursive: 'Rowdies', cursive;
+	/*! body text */
+	--ff-serif: 'Libre Caslon Text', serif;
+	/*! mobile body text */
+	--ff-ss: 'Open Sans', sans-serif;
 	--fs-h1: calc(2rem + 6vw);
 	--fs-h2: 1.75rem;
 	--fs-h3: 1.5rem;
@@ -92,7 +97,7 @@ nav
 	}
 }
 
-@media screen and (min-width: $breakpoint)
+@media screen and (min-width: $screen-size-400)
 {
 	:root
 	{

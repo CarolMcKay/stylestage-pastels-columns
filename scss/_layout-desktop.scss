@@ -3,16 +3,18 @@
 @use "_constants" as *;
 @use "_mixins" as *;
 
-@media screen and (min-width: $breakpoint)
+@media screen and (min-width: $screen-size-400)
 {
 	body
 	{
 		padding-bottom: var(--column-gap);
 	}
 
-	#main
+	#main,
+	.page-footer
 	{
-		padding: 0 2em; /*! cater for sticky nav */
+		/*! cater for sticky nav */
+		padding: 0 2em;
 	}
 
 	section.container,
@@ -21,7 +23,8 @@
 		columns: var(--column-width) 2;
 		column-gap: var(--column-gap);
 		column-rule: var(--rule);
-		max-width: var(--columns-max-width); /*! for webkit browsers */
+		/*! max width for webkit browsers */
+		max-width: var(--columns-max-width);
 
 		h2
 		{
@@ -35,11 +38,14 @@
 		columns: unset;
 		max-width: var(--column-width);
 	}
+}
 
+@media screen and (min-width: 83.5em)
+{
 	#contribute
 	{
 		display: grid;
-		grid-template-columns: 1fr var(--column-gap) 1fr;
+		grid-template-columns: var(--column-width) var(--column-gap) var(--column-width);
 		grid-template-rows: auto auto;
 		grid-template-areas:
 			"contribute-intro . files"
@@ -59,7 +65,8 @@
 		footer
 		{
 			grid-area: files;
-			display: grid; /*! stretch content */
+			/*! use display grid to stretch content */
+			display: grid;
 		}
 	}
 }

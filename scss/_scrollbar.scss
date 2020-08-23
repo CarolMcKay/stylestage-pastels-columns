@@ -4,7 +4,7 @@
 
 :root
 {
-    --col-sb-thumb:var(--col-accent);
+    --col-sb-thumb:salmon;
     --col-sb-track:var(--col-cta);
 }
 
@@ -36,7 +36,7 @@ html
 
 /*! the buttons on the scrollbar (arrows pointing upwards and downwards) */
 ::-webkit-scrollbar-button {
-    // color: var(--col-sb-track);
-    // background-color: var(--col-sb-thumb);
+    /*! color: var(--col-sb-track);
+    background-color: var(--col-sb-thumb); - not used because I have set it's height to zero */
     height: 0;
 }

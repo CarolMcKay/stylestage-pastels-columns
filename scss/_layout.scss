@@ -9,7 +9,7 @@ body
 	padding: 1em var(--padding-page-side) var(--padding-page-side);
 }
 
-@media screen and (max-width: $breakpoint)
+@media screen and (max-width: $screen-size-300)
 {
 	body
 	{
@@ -53,7 +53,8 @@ body
 
 	span
 	{
-		display: flex; /*! shrink to the size of it's content (svg) */
+		/*! use display flex to shrink span to the size of it's content (svg) */
+		display: flex;
 	}
 
 	svg
@@ -75,13 +76,14 @@ a
 	&:active
 	{
 		text-decoration-style: dashed;
-		text-decoration-offset: 0.25em; /*! future css */
+		/*! future css */
+		text-decoration-offset: 0.25em;
 	}
 }
 
 section.container,
 .page-footer .container,
-#files .container /*! footer */
+#files .container
 {
 	padding: 3rem 0;
 	border-bottom: var(--rule);
@@ -267,15 +269,17 @@ https://emojipedia.org/bouquet/ */
 }
 
 
-#files .container /*! footer */
+#files .container
 {
 	--pink-bg: hsl(323, 23%, 89%);
 	--pink-bg-transparent: hsla(323, 23%, 89%, 0.8);
 
 	padding: var(--padding);
 	display: grid;
-	grid-template-columns: repeat(4,1fr);
+	grid-template-columns: minmax(1em, 1fr) repeat(4,max-content) minmax(1em, 1fr);
 	grid-template-rows: max-content repeat(3, auto);
+	row-gap: var(--padding);
+	align-content: start;
 	background-color: var(--pink-bg);
 	background-image:
 		linear-gradient(var(--pink-bg-transparent), var(--pink-bg-transparent)),
@@ -286,7 +290,7 @@ https://emojipedia.org/bouquet/ */
 
 	h3
 	{
-		grid-column: 1 / -1;
+		grid-column: 2 / -2;
 		color: var(--col-text);
 	}
 
@@ -297,20 +301,20 @@ https://emojipedia.org/bouquet/ */
 
 	.link-downloadcss
 	{
-		grid-column: 1 / span 2;
+		grid-column: 2 / span 2;
 	}
 
 	.link-downloadhtml
 	{
-		grid-column: 2 / 4;
+		grid-column: 3 / 5;
 	}
 
 	.link-codepen
 	{
-		grid-column: 3 / span 2;
+		grid-column: 4 / span 2;
 	}
 
-	@media only screen and (max-width: 455px)
+	@media only screen and (max-width: $screen-size-100)
 	{
 		display: flex;
 		flex-direction: column;
@@ -318,13 +322,25 @@ https://emojipedia.org/bouquet/ */
 		h3
 		{
 			text-align: center;
-			margin-bottom: var(--padding);
+			margin-bottom: 0;
 		}
 
 		a
 		{
-			margin-bottom: var(--padding);
-			align-self: stretch;
+			&:nth-of-type(1)
+			{
+				align-self: flex-start;
+			}
+
+			&:nth-of-type(2)
+			{
+				align-self: center;
+			}
+
+			&:nth-of-type(3)
+			{
+				align-self: flex-end;
+			}
 
 			&:last-of-type
 			{
@@ -333,7 +349,7 @@ https://emojipedia.org/bouquet/ */
 		}
 	}
 
-	@media only screen and (min-width: 456px) and (max-width: 899px)
+	@media only screen and (min-width: $screen-size-200) and (max-width: $screen-size-300)
 	{
 		row-gap: var(--padding);
 
@@ -344,13 +360,15 @@ https://emojipedia.org/bouquet/ */
 	}
 }
 
-.page-footer ul /*! for when in columns */
+.page-footer ul
 {
+	/*! for when in columns */
 	break-inside: avoid-column;
 
 	li
 	{
-		margin-bottom: 0; /*! because the a tags have padding */
+		/*! because the a tags have padding */
+		margin-bottom: 0;
 	}
 }
 
@@ -360,16 +378,20 @@ https://emojipedia.org/bouquet/ */
 
 	.container
 	{
-		@media screen and (max-width: 499px)
+		@media screen and (max-width: 580px)
 		{
-			display: grid; /*! to center bunny */
+			/*! display grid to center bunny */
+			display: grid;
 		}
 
 		&::before
 		{
-			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220"); /*! firefox */
-			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220") / "Photo of a white rabbit for cuteness value"; /*! webkit */
-			alt: "Photo of a white rabbit for cuteness value"; /*! safari */
+			/*! firefox */
+			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220");
+			/*! webkit */
+			content: url("https://source.unsplash.com/u_kMWN-BWyU/160x220") / "Photo of a white rabbit for cuteness value";
+			/*! safari */
+			alt: "Photo of a white rabbit for cuteness value";
 			display: inline-block;
 			clip-path: circle(50% at 50% 50%);
 			 /*! hide the alt text in webkit - why is it displaying anyway?! */
@@ -377,12 +399,12 @@ https://emojipedia.org/bouquet/ */
 			height: 220px;
 			overflow: hidden;
 
-			@media screen and (max-width: 499px)
+			@media screen and (max-width: 580px)
 			{
 				margin: 0 auto 1em; /*! margin auto to center bunny */
 			}
 
-			@media screen and (min-width: 500px)
+			@media screen and (min-width: 581px)
 			{
 				float: right;
 				margin: 0.25em;

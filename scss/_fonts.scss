@@ -18,7 +18,7 @@ body
 	{
 		--fs-text: calc(0.95rem * 1.3);
 
-		p, li
+		p, li, a
 		{
 			font-family: var(--ff-ss);
 		}
@@ -33,7 +33,8 @@ header
 	}
 }
 
-h1 /*!see animations for color*/
+/*!see animations for color of h1 */
+h1
 {
 	font-family: var(--ff-cursive);
 	font-size: var(--fs-h1);
@@ -41,7 +42,8 @@ h1 /*!see animations for color*/
 	text-align: center;
 	background-image:
 		var(--h1-bg),
-		linear-gradient(var(--col-h1-fallback), var(--col-h1-fallback)) /*!fallback incase image doesn't load*/
+		/*! gradient fallback colour incase image doesn't load*/
+		linear-gradient(var(--col-h1-fallback), var(--col-h1-fallback))
 		;
 	background-size: var(--h1-bg-size, auto);
 	background-clip: text;
@@ -49,13 +51,13 @@ h1 /*!see animations for color*/
 	background-position: left bottom;
 	margin: 0.75em 0;
 
-	@media screen and (max-width: 600px)
+	@media screen and (max-width: $screen-size-100)
 	{
 		margin: 1em 0 0.75em;
 	}
 }
 
-@media screen and (min-width: $breakpoint)
+@media screen and (min-width: $screen-size-400)
 {
 	h1
 	{
@@ -89,7 +91,7 @@ blockquote
 {
 	margin: var(--padding);
 
-	@media only screen and (max-width: 600px)
+	@media only screen and (max-width: $screen-size-100)
 	{
 		margin-left: 0;
 		margin-right: 0;

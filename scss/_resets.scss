@@ -25,7 +25,8 @@ body
     min-block-size: 100vh;
 	margin:0;
 	overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; /*! smoother scrolling for iphone */
+	/*! touch - smoother scrolling for iphone */
+    -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
 	justify-content: flex-start;
@@ -82,6 +83,15 @@ pre
 {
 	margin-top: 0;
 	margin-block-start: 0;
+}
+
+.container
+{
+	p, ul, ol
+	{
+		margin-bottom: 1.6em;
+		margin-block-end: 1.6em;
+	}
 }
 
 * + :last-child
@@ -170,7 +180,6 @@ a
 	color: inherit;
 	cursor: pointer;
 	display: inline-block;
-	padding: 0.4rem 0;
 
 	@media (any-pointer : coarse)
 	{
@@ -202,6 +211,8 @@ svg
 details summary
 {
 	cursor: pointer;
-	outline: none; /*! chrome fix */
-	display: block; /*! edge fix */
+	/*! chrome fix */
+	outline: none;
+	/*! edge fix */
+	display: block;
 }

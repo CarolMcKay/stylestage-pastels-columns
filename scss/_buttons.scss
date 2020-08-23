@@ -17,5 +17,10 @@
 {
 	display: block;
 	width: max-content;
-	margin:3em auto;
+	margin:3em 0;
+
+	@media screen and (min-width: $screen-size-400)
+	{
+		margin:3em auto;
+	}
 }

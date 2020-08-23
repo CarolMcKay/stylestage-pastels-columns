@@ -7,7 +7,8 @@ main
 {
 	&:focus
 	{
-		outline: none; /*! turn off annoying outline in chrome */
+		/*! turn off annoying outline in chrome */
+		outline: none;
 	}
 }
 
@@ -89,7 +90,8 @@ nav
 
 		a
 		{
-			display: block; /*! make full width of container */
+			/*! make a tag full width of container */
+			display: block;
 
 			&[href^="#"]
 			{
@@ -102,7 +104,8 @@ nav
 					left: 0;
 					font-family:'FontAwesome';
 					font-weight: normal;
-					content: "\f292"; /*! hashtag */
+					/*! hashtag symbol */
+					content: "\f292";
 				}
 			}
 
@@ -118,7 +121,7 @@ nav
 	}
 }
 
-@media screen and (max-width : 899px)
+@media screen and (max-width : $screen-size-300)
 {
 	nav
 	{
@@ -165,7 +168,7 @@ nav
 	}
 }
 
-@media screen and (min-width : 900px)
+@media screen and (min-width : $screen-size-400)
 {
 	nav
 	{
@@ -180,11 +183,12 @@ nav
 	}
 }
 
-@media screen and (min-width: $breakpoint)
+@media screen and (min-width: $screen-size-400)
 {
 	body
 	{
-		overflow-x: hidden; /*! to cater for nav position sticky */
+		/*! to cater for nav position sticky */
+		overflow-x: hidden;
 	}
 
 	nav
@@ -201,10 +205,16 @@ nav
 aside
 {
 	padding: var(--padding) 0 0;
+	border-bottom:var(--rule);
 
-	@media screen and (min-width: 900px)
+	@media screen and (min-width: $screen-size-400)
 	{
 		padding: var(--padding) 0;
+	}
+
+	@media screen and (max-width: $screen-size-300)
+	{
+		width: 100%;
 	}
 
 	a
@@ -213,7 +223,7 @@ aside
 	}
 }
 
-@media screen and (min-width: $breakpoint)
+@media screen and (min-width: $screen-size-400)
 {
 	aside
 	{
@@ -227,7 +237,8 @@ aside
 		block-size: 18rem;
 	}
 
-	.profile /*! aside */
+	/*! aside */
+	.profile
 	{
 		bottom: var(--column-gap);
 		inset-block-end: var(--column-gap);
@@ -261,7 +272,8 @@ aside
 		text-align: right;
 	}
 
-	#styles /*! aside */
+	/*! aside */
+	#styles
 	{
 		width: max-content;
 		padding: 1em 1em 1em var(--padding);
@@ -279,7 +291,8 @@ aside
 			z-index: 2;
 		}
 
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		/*! seperate so it doesn't break :hover in edge */
+		&:focus-within
 		{
 			transform: translateX(-100%);
 			z-index: 2;
@@ -294,7 +307,8 @@ aside
 	}
 }
 
-@media only screen and (min-width : 900px) and (max-width : 83.5em) /*! 1336px ipad pro landscape */
+/*! 83.5em (1336px) - ipad pro landscape */
+@media only screen and (min-width : $screen-size-400) and (max-width : 83.5em)
 {
 	nav
 	{
@@ -308,7 +322,8 @@ aside
 			transform: translateX(0);
 		}
 
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		/*! focus-within seperate so it doesn't break :hover in edge */
+		&:focus-within
 		{
 			transform: translateX(0);
 		}
@@ -326,7 +341,8 @@ aside
 			z-index: 2;
 		}
 
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		/*! focus-within seperate so it doesn't break :hover in edge */
+		&:focus-within
 		{
 			transform: translateX(0);
 			z-index: 2;
@@ -334,7 +350,8 @@ aside
 	}
 }
 
-@media only screen and (min-width : 83.51em) /*! 1336px ipad pro landscape */
+/*! 83.5em (1336px) - ipad pro landscape */
+@media only screen and (min-width : 83.51em)
 {
 	nav
 	{
@@ -348,7 +365,8 @@ aside
 			transform: translateX(0);
 		}
 
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		/*! focus-within seperate so it doesn't break :hover in edge */
+		&:focus-within
 		{
 			transform: translateX(0);
 		}
@@ -366,7 +384,8 @@ aside
 			z-index: 2;
 		}
 
-		&:focus-within /*! seperate so it doesn't break :hover in edge */
+		/*! focus-within seperate so it doesn't break :hover in edge */
+		&:focus-within
 		{
 			transform: translateX(0);
 			z-index: 2;
