@@ -21,3 +21,22 @@ header
 		position: relative;
 	}
 }
+
+@keyframes top-link
+{
+	0%
+	{
+		opacity: 0;
+	}
+
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+.skip-link::after
+{
+	opacity: 0;
+	animation: top-link 50ms forwards 10s;
+}

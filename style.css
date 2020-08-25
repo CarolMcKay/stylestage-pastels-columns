@@ -20,8 +20,8 @@
   --col-cta: Teal;
   --col-outline: var(--col-accent);
   --col-h1-fallback: #777;
-  --col-text: #333;
-  --col-text-shadow: rgba(51, 51, 51, 0.4);
+  --col-text: rgb(51, 51, 51);
+  --col-text-alpha: rgba(51, 51, 51, 0.5);
   --col-bg: wheat;
   --col-after-bg: rgba(255, 255, 255, 0.4);
   --col-after-opacity: 0.7;
@@ -58,6 +58,7 @@ nav {
   */
 :root {
     --col-text: wheat;
+    --col-text-alpha: rgba(245, 222, 179, 0.5);
     --col-h1-fallback: var(--col-text);
     --col-bg: #333;
     --col-cta: DarkOrchid;
@@ -343,11 +344,28 @@ ol li::marker {
 .skip-link {
   position: absolute;
   top: .75em;
-  transition: font-size .1s ease-in,opacity .1s ease-in
+  background: var(--col-bg);
+  transition: font-size .1s ease-in,color .1s ease-in
 }
 .skip-link:not(:hover):not(:focus) {
   font-size: 90%;
-  opacity: .5
+  color: var(--col-text-alpha)
+}
+.skip-link:focus,
+.skip-link:hover {
+  color: var(--col-text)
+}
+.skip-link::after {
+  content: "To top of content ^";
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: .25em .75em;
+  color: var(--col-text);
+  background: var(--col-bg);
+  opacity: 0;
+  animation: 50ms 10s forwards top-link
 }
 /*! menu and links */
 main:focus {
@@ -650,6 +668,14 @@ aside a {
 header h1 {
   animation: 3s linear forwards site-title;
   position: relative
+}
+@keyframes top-link {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
 }
 /*! button look */
 #files a,

@@ -153,14 +153,33 @@ ol
 {
 	position: absolute;
 	top: 0.75em;
+	background: var(--col-bg);
 	transition:
 		font-size ease-in 100ms,
-		opacity ease-in 100ms
+		color ease-in 100ms
 		;
 
 	&:not(:hover):not(:focus)
 	{
 		font-size: 90%;
-		opacity: 0.5;
+		color: var(--col-text-alpha);
+	}
+
+	&:hover,
+	&:focus
+	{
+		color: var(--col-text);
+	}
+
+	&::after
+	{
+		content: "To top of content ^";
+		position: fixed;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0.25em 0.75em;
+		color: var(--col-text);
+		background: var(--col-bg);
 	}
 }
