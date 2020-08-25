@@ -74,10 +74,13 @@ nav {
     --h1-bg: url(https://source.unsplash.com/KOtu2rPqWs4/1600x900);
     --files-bg: url(https://source.unsplash.com/ux7TZRK7tDo/1600x900)
   }
+  #files .container h3 {
+    --col-text: var(--col-bg)
+  }
   #files .container {
-    --col-button-text: var(--col-bg);
+    --col-button-text: var(--col-menu);
     --col-button-text-hover: var(--col-menu);
-    --col-button-bg: var(--col-text);
+    --col-button-bg: var(--col-cta);
     --col-button-bg-hover: var(--col-bg);
     --pink-bg: hsl(70, 14%, 32%);
     --pink-bg-transparent: hsla(70, 14%, 32%, 0.8)
